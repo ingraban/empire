@@ -318,7 +318,7 @@
 							<vendor>Wilfried Saak</vendor>
 							<icon>target/jpackage/Empire.icns</icon>
 							<input>target/jpackage</input>
-							<mainjar>empire-0.0.1-SNAPSHOT.jar</mainjar>
+							<mainjar>empire-${version}.jar</mainjar>
 							<mainclass>name.saak.empire.EmpireBuilderApplication</mainclass>
 							<resourcedir>jpackage</resourcedir>
 						</configuration>
