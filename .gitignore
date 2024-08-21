@@ -1,0 +1,12 @@
+/target/
+
+# macOS
+**/.DS_Store
+
+# eclipse
+.settings/
+.classpath
+.project
+
+# VS Code
+.vscode/
