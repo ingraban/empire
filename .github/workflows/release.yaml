@@ -1,0 +1,39 @@
+name: release version
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-14-xlarge
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build and Test
+        uses: qcastel/github-actions-maven-cmd@main
+        with:
+          maven-args: "clean install"
+
+      - name: Release
+        uses: qcastel/github-actions-maven-release@main
+        # env:
+        #  JAVA_HOME: /usr/lib/jvm/java-21-openjdk/
+        # Java 21.0.4+7.0 is default version
+        with:
+          git-release-bot-name: "bot-saak"
+          git-release-bot-email: "gitea@saak.name"
+
+          docker-registry-id: registry.hub.docker.com
+          docker-registry-username: qcastel
+          docker-registry-password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+
+          maven-args: "-Dmaven.javadoc.skip=true -DskipTests -DskipITs -Dmaven.deploy.skip=true"
+          maven-servers: '[{"id": "serverId1", "username": "username", "password": "password", "privateKey": "test", "passphrase": "testes"}, {"id": "serverId2", "username": "username2", "password": "password2"}]'
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+          gpg-enabled: true
+          gpg-key-id: ${{ secrets.GPG_KEY_ID }}
+          gpg-key: ${{ secrets.GPG_KEY }}
