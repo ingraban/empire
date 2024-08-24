@@ -1,0 +1,898 @@
+<game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="/Users/saak/git/aero.minova.rcp/bundles/name.saak.empire.model/src/name/saak/empire/model/Game.xsd">
+	<name>Empire Builder</name>
+	<map>
+		<row>
+			<mountain start="3" length="6"/>
+			<clear length="22"/>
+			<mountain length="2"/>
+		</row>
+		<row>
+			<mountain start="4" length="4"/>
+			<clear/>
+			<mountain/>
+			<clear length="21"/>
+			<mountain length="2"/>
+		</row>
+		<row>
+			<mountain start="5"/>
+			<clear length="2"/>
+			<mountain/>
+			<clear/>
+			<clear offset="1" length="20"/>
+			<mountain length="3"/>
+		</row>
+		<row>
+			<mountain start="6" length="2"/>
+			<clear/>
+			<mountain length="2"/>
+			<clear length="20"/>
+			<mountain length="3"/>
+		</row>
+		<row>
+			<mountain start="7" length="5"/>
+			<clear length="11"/>
+			<mountain/>
+			<clear length="7"/>
+			<mountain length="3"/>
+			<clear/>
+		</row>
+		<row>
+			<clear start="2"/>
+			<clear offset="1"/>
+			<mountain length="2"/>
+			<clear/>
+			<mountain/>
+			<clear length="3"/>
+			<clear offset="1" length="15"/>
+			<mountain length="4"/>
+		</row>
+		<row>
+			<clear start="3"/>
+			<mountain length="6"/>
+			<clear length="6"/>
+			<clear length="4" offset="1"/>
+			<mountain/>
+			<clear length="7"/>
+			<mountain length="3"/>
+			<clear/>
+		</row>
+		<row>
+			<clear start="2"/>
+			<mountain offset="1"/>
+			<clear length="3"/>
+			<mountain length="2"/>
+			<clear/>
+			<mountain/>
+			<clear length="9"/>
+			<mountain/>
+			<clear length="2"/>
+			<mountain/>
+			<clear length="2"/>
+			<mountain/>
+			<clear/>
+			<mountain length="2"/>
+			<clear/>
+		</row>
+		<row>
+			<mountain start="7" length="8"/>
+			<clear length="9"/>
+			<mountain/>
+			<clear length="2"/>
+			<mountain/>
+			<clear length="2"/>
+			<mountain/>
+			<clear/>
+			<mountain length="2"/>
+			<clear/>
+		</row>
+		<row>
+			<clear start="2"/>
+			<mountain offset="1" length="6"/>
+			<clear/>
+			<mountain/>
+			<clear length="9"/>
+			<clear offset="1"/>
+			<mountain length="2"/>
+			<clear/>
+			<mountain/>
+			<clear/>
+			<mountain/>
+			<clear/>
+			<mountain/>
+			<clear/>
+		</row>
+		<row>
+			<clear start="7"/>
+			<mountain length="4"/>
+			<clear length="9"/>
+			<mountain/>
+			<clear/>
+			<clear offset="1"/>
+			<mountain/>
+			<clear length="4"/>
+			<mountain/>
+			<clear/>
+			<mountain/>
+			<clear/>
+		</row>
+		<row>
+			<mountain start="2"/>
+			<clear offset="1" length="3"/>
+			<mountain length="4"/>
+			<clear length="7"/>
+			<mountain length="2"/>
+			<clear offset="2" length="2"/>
+			<mountain/>
+			<clear/>
+			<mountain/>
+			<clear/>
+			<mountain offset="1"/>
+			<clear length="2"/>
+		</row>
+		<row>
+			<clear start="3" length="2"/>
+			<mountain length="2"/>
+			<clear/>
+			<mountain length="2"/>
+			<clear/>
+			<mountain/>
+			<clear length="6"/>
+			<mountain length="2"/>
+			<mountain offset="3"/>
+			<clear length="2"/>
+			<mountain length="2"/>
+			<clear length="2"/>
+			<mountain/>
+			<clear/>
+		</row>
+		<row>
+			<clear length="4" start="2"/>
+			<mountain/>
+			<clear length="2"/>
+			<mountain length="2"/>
+			<clear length="7"/>
+			<mountain/>
+			<clear offset="3" length="2"/>
+			<clear offset="1"/>
+			<mountain/>
+			<clear length="2"/>
+			<mountain/>
+		</row>
+		<row>
+			<clear start="5" length="3"/>
+			<mountain length="3"/>
+			<clear length="9"/>
+			<clear offset="2" length="6"/>
+			<mountain length="3"/>
+			<clear/>
+		</row>
+		<row>
+			<clear start="2"/>
+			<mountain/>
+			<clear length="2"/>
+			<mountain/>
+			<clear length="9"/>
+			<clear offset="1"/>
+			<mountain offset="2"/>
+			<clear length="2"/>
+			<clear offset="2"/>
+			<mountain/>
+			<clear length="2"/>
+			<mountain/>
+			<clear/>
+		</row>
+		<row>
+			<clear start="1"/>
+			<mountain length="3"/>
+			<clear/>
+			<mountain/>
+			<clear/>
+			<mountain/>
+			<clear length="10"/>
+			<mountain/>
+			<clear/>
+			<clear offset="1"/>
+			<clear offset="2" length="2"/>
+			<mountain length="3"/>
+		</row>
+		<row>
+			<clear start="2"/>
+			<mountain length="3"/>
+			<clear/>
+			<mountain length="3"/>
+			<clear length="8"/>
+			<mountain length="2"/>
+			<clear offset="1" length="2"/>
+			<clear offset="1" length="2"/>
+			<mountain length="3"/>
+			<clear length="2"/>
+		</row>
+		<row>
+			<mountain start="1" length="9"/>
+			<clear length="9"/>
+			<mountain/>
+			<clear/>
+			<clear offset="1"/>
+			<clear offset="1"/>
+			<mountain offset="2"/>
+			<clear/>
+		</row>
+		<row>
+			<mountain length="7"/>
+			<clear length="2"/>
+			<mountain/>
+			<clear length="4"/>
+			<mountain/>
+			<clear length="5"/>
+			<clear offset="1" length="2"/>
+			<clear offset="1" length="2"/>
+			<mountain length="3"/>
+			<clear/>
+		</row>
+		<row>
+			<clear start="1"/>
+			<mountain/>
+			<clear length="2"/>
+			<mountain length="2"/>
+			<clear/>
+			<mountain length="2"/>
+			<clear/>
+			<mountain/>
+			<clear length="3"/>
+			<mountain/>
+			<clear/>
+			<clear offset="1" length="3"/>
+			<mountain offset="1"/>
+			<clear offset="1" length="7"/>
+		</row>
+		<row>
+			<mountain length="5"/>
+			<clear length="2"/>
+			<mountain/>
+			<clear/>
+			<mountain/>
+			<clear length="4"/>
+			<mountain/>
+			<clear length="5"/>
+			<clear offset="1" length="4"/>
+			<clear offset="1" length="2"/>
+			<mountain/>
+			<clear/>
+		</row>
+		<row>
+			<mountain start="1" length="3"/>
+			<clear/>
+			<mountain/>
+			<mountain offset="1" length="5"/>
+			<clear length="3"/>
+			<mountain/>
+			<clear length="5"/>
+			<clear offset="1" length="4"/>
+			<mountain length="2"/>
+			<clear offset="1"/>
+		</row>
+		<row>
+			<mountain/>
+			<clear/>
+			<mountain length="4"/>
+			<clear/>
+			<mountain/>
+			<clear/>
+			<mountain length="2"/>
+			<clear length="9"/>
+			<clear offset="1" length="3"/>
+			<mountain offset="1" length="2"/>
+		</row>
+		<row>
+			<mountain start="1" length="2"/>
+			<clear/>
+			<mountain length="3"/>
+			<clear/>
+			<mountain length="2"/>
+			<clear length="11"/>
+			<clear length="2" offset="1"/>
+			<clear offset="1"/>
+			<mountain length="2"/>
+			<clear offset="1"/>
+		</row>
+		<row>
+			<clear/>
+			<mountain length="3"/>
+			<clear/>
+			<mountain length="7"/>
+			<clear length="10"/>
+			<clear offset="2"/>
+			<mountain length="2"/>
+		</row>
+		<row>
+			<mountain start="1"/>
+			<clear/>
+			<mountain/>
+			<clear/>
+			<mountain length="3"/>
+			<clear length="4"/>
+			<clear offset="1" length="7"/>
+			<clear offset="2" length="3"/>
+			<mountain/>
+			<clear length="2"/>
+		</row>
+		<row>
+			<mountain length="3"/>
+			<clear/>
+			<mountain/>
+			<clear length="3"/>
+			<mountain length="3"/>
+			<clear length="8"/>
+			<clear offset="2" length="4"/>
+			<mountain length="2"/>
+			<clear offset="1"/>
+		</row>
+		<row>
+			<mountain start="1"/>
+			<clear length="2"/>
+			<mountain/>
+			<clear/>
+			<mountain/>
+			<clear/>
+			<mountain offset="1" length="2"/>
+			<clear length="6"/>
+			<clear offset="1" length="2"/>
+			<clear offset="1" length="4"/>
+			<mountain length="2"/>
+			<clear length="2"/>
+		</row>
+		<row>
+			<clear length="2"/>
+			<mountain length="4"/>
+			<clear length="2"/>
+			<mountain length="3"/>
+			<clear length="4"/>
+			<clear offset="1" length="3"/>
+			<clear offset="2" length="4"/>
+			<mountain/>
+			<clear length="3"/>
+		</row>
+		<row>
+			<mountain start="1"/>
+			<clear/>
+			<mountain/>
+			<clear/>
+			<mountain length="2"/>
+			<clear length="3"/>
+			<mountain/>
+			<clear length="9"/>
+			<clear offset="1" length="4"/>
+			<clear offset="1"/>
+			<clear offset="1"/>
+		</row>
+		<row>
+			<mountain/>
+			<clear/>
+			<mountain/>
+			<clear/>
+			<mountain length="2"/>
+			<clear length="2"/>
+			<mountain length="3"/>
+			<clear length="14"/>
+			<mountain/>
+			<clear length="3"/>
+		</row>
+		<row>
+			<clear start="3"/>
+			<mountain length="2"/>
+			<clear/>
+			<mountain/>
+			<clear length="4"/>
+			<clear offset="1" length="13"/>
+			<mountain length="2"/>
+			<clear/>
+		</row>
+		<row>
+			<mountain/>
+			<clear/>
+			<mountain length="3"/>
+			<clear length="3"/>
+			<mountain length="3"/>
+			<clear length="14"/>
+			<mountain/>
+			<clear length="2"/>
+		</row>
+		<row>
+			<clear start="1" length="2"/>
+			<mountain/>
+			<clear/>
+			<mountain length="4"/>
+			<clear/>
+			<mountain/>
+			<clear length="13"/>
+			<mountain length="2"/>
+			<clear length="3"/>
+		</row>
+		<row>
+			<mountain/>
+			<clear/>
+			<mountain/>
+			<clear length="2"/>
+			<mountain length="4"/>
+			<clear/>
+			<mountain/>
+			<clear length="5"/>
+			<clear offset="1" length="5"/>
+			<mountain offset="1" length="3"/>
+			<clear/>
+			<clear offset="1"/>
+		</row>
+		<row>
+			<mountain start="1"/>
+			<clear/>
+			<mountain length="2"/>
+			<clear length="3"/>
+			<mountain length="3"/>
+			<clear length="5"/>
+			<clear offset="2"/>
+			<clear offset="1" length="4"/>
+			<mountain/>
+			<clear length="4"/>
+		</row>
+		<row>
+			<clear start="2" length="2"/>
+			<mountain length="3"/>
+			<clear length="3"/>
+			<mountain length="2"/>
+			<clear length="5"/>
+			<clear offset="1" length="5"/>
+			<mountain length="4"/>
+			<clear length="3"/>
+		</row>
+		<row>
+			<mountain start="1"/>
+			<clear/>
+			<mountain/>
+			<mountain offset="1"/>
+			<clear/>
+			<mountain length="4"/>
+			<clear length="5"/>
+			<clear offset="2" length="3"/>
+			<mountain length="3"/>
+			<clear/>
+			<mountain/>
+			<clear length="3"/>
+		</row>
+		<row>
+			<mountain start="2" length="6"/>
+			<clear/>
+			<mountain length="3"/>
+			<clear length="5"/>
+			<clear offset="1" length="6"/>
+			<mountain length="2"/>
+			<clear/>
+			<clear offset="1"/>
+		</row>
+		<row>
+			<clear start="3"/>
+			<mountain/>
+			<clear/>
+			<mountain length="3"/>
+			<clear/>
+			<mountain length="3"/>
+			<clear length="10"/>
+			<mountain length="4"/>
+			<clear length="3"/>
+		</row>
+		<row>
+			<mountain start="2"/>
+			<clear offset="1" length="2"/>
+			<mountain/>
+			<clear length="2"/>
+			<mountain length="3"/>
+			<clear length="6"/>
+			<mountain/>
+			<clear length="3"/>
+			<mountain/>
+			<mountain offset="1" length="2"/>
+			<clear length="3"/>
+		</row>
+		<row>
+			<mountain start="7" length="2"/>
+			<clear/>
+			<mountain length="5"/>
+			<clear length="5"/>
+			<mountain length="2"/>
+			<clear length="3"/>
+			<mountain/>
+			<clear length="6"/>
+		</row>
+		<row>
+			<mountain start="2"/>
+			<mountain offset="1"/>
+			<clear/>
+			<mountain length="2"/>
+			<clear length="2"/>
+			<mountain length="2"/>
+			<clear length="6"/>
+			<mountain length="2"/>
+			<clear length="2"/>
+			<mountain length="3"/>
+			<clear length="4"/>
+		</row>
+		<row>
+			<mountain start="7"/>
+			<clear/>
+			<mountain/>
+			<clear/>
+			<mountain length="4"/>
+			<clear length="5"/>
+			<mountain length="2"/>
+			<clear length="3"/>
+			<mountain length="2"/>
+			<clear length="4"/>
+		</row>
+		<row>
+			<mountain start="6"/>
+			<clear length="2"/>
+			<mountain length="3"/>
+			<clear offset="1" length="7"/>
+			<mountain/>
+			<clear/>
+			<clear offset="1" length="7"/>
+		</row>
+		<row>
+			<clear start="3"/>
+			<mountain length="2"/>
+			<clear length="2"/>
+			<mountain/>
+			<clear length="9"/>
+			<mountain/>
+			<clear length="5"/>
+			<clear offset="1" length="2"/>
+			<clear offset="1"/>
+		</row>
+		<row>
+			<clear start="4" length="5"/>
+			<mountain/>
+			<clear/>
+			<mountain/>
+			<clear length="4"/>
+			<clear offset="1" length="2"/>
+			<mountain/>
+			<clear length="4"/>
+			<clear offset="2" length="3"/>
+		</row>
+		<row>
+			<clear start="7" length="4"/>
+			<mountain length="2"/>
+			<clear/>
+			<mountain/>
+			<clear length="11"/>
+			<clear offset="1" length="3"/>
+		</row>
+		<row>
+			<clear start="6" length="2"/>
+			<mountain/>
+			<clear/>
+			<mountain length="3"/>
+			<clear length="11"/>
+			<clear offset="3" length="2"/>
+		</row>
+		<row>
+			<clear start="9"/>
+			<mountain/>
+			<mountain offset="1" length="3"/>
+			<clear length="12"/>
+			<clear offset="1" length="3"/>
+		</row>
+		<row>
+			<mountain start="10" length="2"/>
+			<clear/>
+			<mountain length="2"/>
+			<clear length="16"/>
+		</row>
+		<row>
+			<clear start="11" length="5"/>
+			<mountain/>
+			<clear length="15"/>
+		</row>
+		<row>
+			<clear start="12"/>
+			<mountain length="5"/>
+			<clear length="3"/>
+			<clear offset="1" length="10"/>
+		</row>
+		<row>
+			<clear start="13"/>
+			<mountain/>
+			<clear/>
+			<mountain/>
+			<clear/>
+			<mountain/>
+			<clear length="13"/>
+		</row>
+		<row>
+			<clear start="20"/>
+			<mountain/>
+			<clear length="15"/>
+		</row>
+		<row>
+			<clear start="19"/>
+			<mountain length="2"/>
+			<clear length="14"/>
+		</row>
+		<row>
+			<mountain start="20"/>
+			<clear/>
+			<mountain/>
+			<clear length="8"/>
+			<clear offset="3" length="3"/>
+		</row>
+		<row>
+			<mountain start="21" length="2"/>
+			<clear length="7"/>
+			<clear offset="5" length="2"/>
+		</row>
+		<row>
+			<mountain start="22"/>
+			<clear length="9"/>
+			<clear offset="4" length="2"/>
+		</row>
+		<row>
+			<mountain start="21"/>
+			<clear length="4"/>
+			<clear offset="4"/>
+			<clear offset="4" length="3"/>
+		</row>
+		<row>
+			<mountain start="22"/>
+			<clear offset="1" length="4"/>
+			<clear offset="9"/>
+		</row>
+		<row>
+			<clear start="27" length="3"/>
+			<clear offset="9" length="2"/>
+		</row>
+		<row>
+			<clear start="26" length="3"/>
+			<clear offset="9" length="3"/>
+		</row>
+		<row>
+			<clear start="27" length="2"/>
+			<clear offset="10"/>
+		</row>
+		<row>
+			<clear start="28"/>
+			<clear offset="11" length="2"/>
+		</row>
+		<row>
+			<clear start="29"/>
+			<clear offset="11"/>
+		</row>
+		<row>
+			<clear start="28"/>
+		</row>
+		<row>
+			<clear start="29"/>
+		</row>
+	</map>
+	<loads>
+		<!--
+		<load count="3" icon="beer.png" id="beer" name="Bier"/>
+		-->
+		<load count="3" icon="bauxite.png" id="bauxite" name="Bauxit"/>
+		<load count="4" icon="cars.png" id="cars" name="Autos"/>
+		<load count="4" icon="cattle.png" id="cattle" name="Rinder"/>
+		<!--
+		<load count="3" icon="china.png" id="china" name="Porzellan"/>
+		-->
+		<load count="3" icon="coal.png" id="coal" name="Kohle"/>
+		<load count="4" icon="copper.png" id="copper" name="Kupfer"/>
+		<load count="3" icon="corn.png" id="corn" name="Mais"/>
+		<load count="4" icon="cotton.png" id="cotton" name="Baumwolle"/>
+		<load count="4" icon="fish.png" id="fish" name="Fisch"/>
+		<load count="3" icon="fruit.png" id="fruit" name="Obst"/>
+		<load count="4" icon="imports.png" id="imports" name="Importe"/>
+		<load count="3" icon="iron.png" id="iron" name="Eisen"/>
+		<load count="4" icon="lead.png" id="lead" name="Blei"/>
+		<load count="5" icon="machinery.png" id="machinery" name="Maschinen"/>
+		<load count="3" icon="nickel.png" id="nickel" name="Nickel"/>
+		<load count="3" icon="oats.png" id="oats" name="Hafer"/>
+		<load count="4" icon="oil.png" id="oil" name="Öl"/>
+		<load count="3" icon="rice.png" id="rice" name="Reis"/>
+		<load count="3" icon="sheep.png" id="sheep" name="Schaf"/>
+		<load count="4" icon="steel.png" id="steel" name="Stahl"/>
+		<load count="3" icon="sugar.png" id="sugar" name="Zucker"/>
+		<load count="3" icon="swine.png" id="swine" name="Schweine"/>
+		<load count="4" icon="tobacco.png" id="tobacco" name="Tabak"/>
+		<load count="3" icon="tourists.png" id="tourists" name="Touristen"/>
+		<load count="3" icon="uranium.png" id="uranium" name="Uran"/>
+		<load count="4" icon="wheat.png" id="wheat" name="Weizen"/>
+		<load count="4" icon="wood.png" id="wood" name="Holz"/>
+	</loads>
+	<cities>
+		<major-city id="atlanta" name="Atlanta" position-x="45" position-y="48"/>
+		<small-city id="billings" name="Billings" position-x="18" position-y="17">
+			<load>cattle</load>
+			<load>sheep</load>
+		</small-city>
+		<small-city id="birmingham" name="Birmingham" position-x="42" position-y="49">
+			<load>iron</load>
+			<load>steel</load>
+		</small-city>
+		<small-city id="boise" name="Boise" position-x="11" position-y="22">
+			<load>lead</load>
+		</small-city>
+		<medium-city id="boston" name="Boston" position-x="57" position-y="18">
+			<load>fish</load>
+			<load>machinery</load>
+		</medium-city>
+		<small-city id="buffalo" name="Buffalo" position-x="50" position-y="21">
+			<load>machinery</load>
+		</small-city>
+		<small-city id="calgary" name="Calgary" position-x="15" position-y="2">
+			<load>cattle</load>
+			<load>lead</load>
+		</small-city>
+		<small-city id="cheyenne" name="Cheyenne" position-x="23" position-y="26">
+			<load>cattle</load>
+		</small-city>
+		<major-city id="chicago" name="Chicago" position-x="39" position-y="28">
+			<load>tourists</load>
+		</major-city>
+		<small-city id="cincinnati" name="Cincinnati" position-x="44" position-y="35">
+			<load>coal</load>
+			<load>machinery</load>
+		</small-city>
+		<medium-city id="dallas" name="Dallas" position-x="30" position-y="53">
+			<load>cotton</load>
+			<load>oil</load>
+		</medium-city>
+		<medium-city id="denver" name="Denver" position-x="21" position-y="32">
+			<load>lead</load>
+		</medium-city>
+		<small-city id="desmoines" name="Des Moines" position-x="33" position-y="28">
+			<load>corn</load>
+			<load>swine</load>
+		</small-city>
+		<medium-city id="detroit" name="Detroit" position-x="44" position-y="25">
+			<load>cars</load>
+		</medium-city>
+		<small-city id="duluth" name="Duluth" position-x="34" position-y="15">
+			<load>coal</load>
+			<load>iron</load>
+		</small-city>
+		<small-city id="fargo" name="Fargo" position-x="30" position-y="15">
+			<load>oats</load>
+		</small-city>
+		<medium-city id="houston" name="Houston" position-x="31" position-y="60">
+			<load>oil</load>
+			<load>rice</load>
+		</medium-city>
+		<small-city id="jacksonville" name="Jacksonville" position-x="51" position-y="54">
+			<load>machinery</load>
+		</small-city>
+		<major-city id="kansas" name="Kansas City" position-x="32" position-y="37"/>
+		<small-city id="knoxville" name="Knoxville" position-x="44" position-y="41">
+			<load>machinery</load>
+		</small-city>
+		<small-city id="lasvegas" name="Las Vegas" position-x="7" position-y="38"/>
+		<major-city id="losangelos" name="Los Angelos" position-x="4" position-y="43"/>
+		<small-city id="memphis" name="Memphis" position-x="38" position-y="45">
+			<load>bauxite</load>
+		</small-city>
+		<small-city id="miami" name="Miami" position-x="53" position-y="64">
+			<load>cattle</load>
+		</small-city>
+		<medium-city id="minneapolis" name="Minneapolis" position-x="33" position-y="20">
+			<load>corn</load>
+		</medium-city>
+		<medium-city id="montreal" name="Montreal" position-x="54" position-y="11">
+			<load>imports</load>
+		</medium-city>
+		<medium-city id="neworleans" name="New Orleans" position-x="39" position-y="58">
+			<load>rice</load>
+		</medium-city>
+		<major-city id="newyork" name="New York" position-x="55" position-y="24">
+			<load>tourists</load>
+		</major-city>
+		<small-city id="norfolk" name="Norfolk" position-x="54" position-y="35">
+			<load>fish</load>
+			<load>imports</load>
+		</small-city>
+		<small-city id="oklahomacity" name="Oklahoma City" position-x="28" position-y="47">
+			<load>oil</load>
+			<load>wheat</load>
+		</small-city>
+		<small-city id="omaha" name="Omaha" position-x="30" position-y="29">
+			<load>oats</load>
+			<load>wheat</load>
+		</small-city>
+		<medium-city id="philadelphia" name="Philadelphia" position-x="54" position-y="27">
+			<load>imports</load>
+		</medium-city>
+		<small-city id="phoenix" name="Phoenix" position-x="13" position-y="50">
+			<load>copper</load>
+		</small-city>
+		<small-city id="pittsburgh" name="Pittsburgh" position-x="49" position-y="30">
+			<load>steel</load>
+		</small-city>
+		<small-city id="portlandme" name="Portland Me." position-x="58" position-y="13">
+			<load>wood</load>
+		</small-city>
+		<small-city id="portlandor" name="Portland Or." position-x="3" position-y="14">
+			<load>copper</load>
+			<load>fish</load>
+			<load>wood</load>
+		</small-city>
+		<small-city id="raleigh" name="Raleigh" position-x="52" position-y="39">
+			<load>cotton</load>
+			<load>tobacco</load>
+		</small-city>
+		<small-city id="regina" name="Regina" position-x="22" position-y="5">
+			<load>cattle</load>
+			<load>uranium</load>
+		</small-city>
+		<small-city id="stlouis" name="St. Louis" position-x="37" position-y="36">
+			<load>corn</load>
+			<load>swine</load>
+		</small-city>
+		<small-city id="saltlakecity" name="Salt Lake City" position-x="15" position-y="28">
+			<load>coal</load>
+			<load>sheep</load>
+		</small-city>
+		<small-city id="sandiego" name="San Diego" position-x="5" position-y="48">
+			<load>fruit</load>
+			<load>machinery</load>
+		</small-city>
+		<medium-city id="sanfrancisco" name="San Francisco" position-x="1" position-y="32">
+			<load>fruit</load>
+			<load>imports</load>
+			<load>sugar</load>
+		</medium-city>
+		<small-city id="santafe" name="Santa Fe" position-x="18" position-y="45">
+			<load>coal</load>
+			<load>uranium</load>
+		</small-city>
+		<medium-city id="savannah" name="Savannah" position-x="51" position-y="46">
+			<load>cotton</load>
+			<load>tobacco</load>
+		</medium-city>
+		<major-city id="seattle" name="Seattle" position-x="4" position-y="9"/>
+		<small-city id="sudbury" name="Sudbury" position-x="46" position-y="13">
+			<load>nickel</load>
+		</small-city>
+		<small-city id="tampa" name="Tampa" position-x="50" position-y="61">
+			<load>fruit</load>
+		</small-city>
+		<medium-city id="toronto" name="Toronto" position-x="49" position-y="18">
+			<load>cars</load>
+			<load>machinery</load>
+		</medium-city>
+		<small-city id="vancouver" name="Vancouver" position-x="5" position-y="4">
+			<load>fish</load>
+			<load>nickel</load>
+		</small-city>
+		<small-city id="washingtondc" name="Washington D.C." position-x="53" position-y="30"/>
+		<small-city id="winnipeg" name="Winnipeg" position-x="29" position-y="6">
+			<load>wheat</load>
+			<load>oats</load>
+		</small-city>
+		<!--
+		<small-city position-x="2" position-y="33" id="wakayama" name="Wakayama">
+			<load>fruit</load>
+			<load>sugar</load>
+		</small-city>
+		<major-city position-x="6" position-y="12" id="boston" name="Boston">
+			<load>tourists</load>
+		</major-city>
+		<major-city position-x="6" position-y="12" id="chicago" name="Chicago" radius="3">
+			<load>tourists</load>
+		</major-city>
+		-->
+	</cities>
+	<cards>
+		<demand-card id="3">
+			<demand money="23" city="calgary" load="sugar"/>
+			<demand money="11" city="winnipeg" load="copper"/>
+			<demand money="53" city="calgary" load="wood"/>
+		</demand-card>
+	</cards>
+</game>
