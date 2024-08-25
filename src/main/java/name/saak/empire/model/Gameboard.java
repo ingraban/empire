@@ -1,8 +1,10 @@
 package name.saak.empire.model;
 
+import java.awt.Dimension;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Component;
@@ -31,7 +33,9 @@ public class Gameboard {
 			game = (Game) jaxbUnmarshaller.unmarshal(inputStream);
 //				in.close();
 			calcSize();
-			System.out.println(game.getName());
+			Dimension d = calcSize();
+			System.out.println(String.format("Map %s is %d width and %d height.", game.getName(), d.width, d.height));
+			printMap();
 		} catch (IOException e) {
 			e.printStackTrace();
 
@@ -41,7 +45,16 @@ public class Gameboard {
 		}
 	}
 
-	private void calcSize() {
+	private void printMap() {
+		game.getCities().getSmallCityOrMediumCityOrMajorCity().forEach(c -> System.out
+				.println(String.format("City: %s, at (%d, %d) is a %s", c.getName(), c.getPositionX(), c.getPositionY(), c.getClass().getSimpleName())));
+	}
+
+	public List<Row> getRows() {
+		return game.getMap().getRow();
+	}
+
+	private Dimension calcSize() {
 		if (game == null) System.out.println("No map loaded");
 
 		int rows = game.getMap().getRow().size();
@@ -54,9 +67,14 @@ public class Gameboard {
 			for (JAXBElement<RowMilepost> rm : r.getClearOrMountain()) {
 				cols += rm.getValue().getLength();
 			}
-			if (start + cols * 2 > columns) columns = start + cols * 2;
+			if ((start + cols * 2 - 1) > columns) //
+				columns = start + cols * 2 - 1;
 		}
-		System.out.println(String.format("%s has %d rows and %d columns", game.getName(), rows, columns + 1));
+		return new Dimension(columns, rows);
+	}
+
+	public Dimension getDimension() {
+		return calcSize();
 	}
 
 }

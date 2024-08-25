@@ -1,21 +1,19 @@
 package name.saak.empire.ui;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
+import java.awt.Point;
+import java.awt.event.InputEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
-import java.net.URL;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -28,24 +26,16 @@ public class MapFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
-	private JPanel panel;
-	private float zoomFaktor = 1.5f;
-	private JLabel lblHalloWelt;
-	private JLabel lblImage;
 
 	/**
 	 * Create the frame.
 	 */
-	public MapFrame() {
+	@Autowired
+	public MapFrame(MapPanel mapPanel) {
+		setTitle("Map");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		ImageIcon ii = null;
 
-		String imgLocation = "/icons/32/zoom_fit.png";
-		URL imageURL = getClass().getResource(imgLocation);
-		ii = new ImageIcon(imageURL);
-
-		setIconImage(ii.getImage());
 		contentPane = new JPanel();
 		// contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -55,54 +45,42 @@ public class MapFrame extends JFrame {
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		scrollPane.setBorder(null);
 
-		panel = new JPanel() {
-			private static final long serialVersionUID = 202408202310L;
-
-			@Override
-			public void paintComponent(Graphics g) {
-				super.paintComponent(g);
-				Graphics2D g2 = (Graphics2D) g;
-				g2.scale(zoomFaktor, zoomFaktor);
-			}
-
-			public Dimension getPreferredSize() {
-				Dimension d = super.getPreferredSize();
-				d.height = (int) (d.height * zoomFaktor);
-				d.width = (int) (d.width * zoomFaktor);
-				return d;
-			}
-		};
-		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
+		FlowLayout flowLayout = (FlowLayout) mapPanel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 //		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 
-		panel.addMouseWheelListener(new MouseWheelListener() {
+		scrollPane.setViewportView(mapPanel);
+		scrollPane.getHorizontalScrollBar().setUnitIncrement(50);
+		scrollPane.getVerticalScrollBar().setUnitIncrement(25);
+
+		scrollPane.addMouseWheelListener(new MouseWheelListener() {
 
 			@Override
 			public void mouseWheelMoved(MouseWheelEvent e) {
-				Rectangle r = scrollPane.getViewport().getViewRect();
-				// r.translate(e.getX()/2,e.getY()/2);
+				System.out.println(
+						String.format("%d & %d = %d (%s) / rotation = %f", e.getModifiersEx(), InputEvent.ALT_DOWN_MASK,
+								e.getModifiersEx() & InputEvent.ALT_DOWN_MASK, "" + e.isShiftDown(), e.getPreciseWheelRotation()));
 
-				zoomFaktor += (e.getPreciseWheelRotation() > 0) ? 0.1 : -0.1;
+				if ((e.getModifiersEx() & InputEvent.ALT_DOWN_MASK) != InputEvent.ALT_DOWN_MASK) return;
 
-//				scrollPane.getViewport().setViewSize(new Dimension(WIDTH, HEIGHT));
-//				;
-
-				panel.revalidate();
-				System.out.println(r);
-
-//				scrollPane.getViewport().scrollRectToVisible(r);
+				mapPanel.setZoomFactor(mapPanel.getZoomFactor() + ((e.getPreciseWheelRotation() > 0) ? 0.1 : -0.1));
+				mapPanel.revalidate();
 			}
 
 		});
-		scrollPane.setViewportView(panel);
 
-		lblHalloWelt = new JLabel("Hallo Welt! Ich brauche einen sehr langen Text");
-		panel.add(lblHalloWelt);
+		mapPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				double zoomFactor = mapPanel.getZoomFactor();
+				Point pz = e.getPoint();
+				Point p = new Point((int) (pz.x / zoomFactor), (int) (pz.y / zoomFactor));
+				Point pc = new Point((int) Math.round((p.x - 25) / 50.0), (int) Math.round(p.y / 25.0));
+				if ((pc.x + pc.y) % 2 > 0) pc = new Point(-1, -1);
 
-		lblImage = new JLabel();
-		lblImage.setIcon(ii);
-		panel.add(lblImage);
+				System.out.println(String.format("Mouse click Zoom(%d, %d) -> Draw(%d, %d) -> Coordinate(%d, %d)", pz.x, pz.y, p.x, p.y, pc.x, pc.y));
+			}
+		});
 	}
 
 }
