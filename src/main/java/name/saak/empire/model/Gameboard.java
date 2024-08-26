@@ -1,9 +1,12 @@
 package name.saak.empire.model;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,14 +16,24 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
+import lombok.AccessLevel;
+import lombok.Getter;
 import name.saak.empire.schema.Game;
 import name.saak.empire.schema.Row;
 import name.saak.empire.schema.RowMilepost;
+import name.saak.empire.schema.SmallCity;
 
 @Component
 public class Gameboard {
+	@Getter(AccessLevel.NONE)
+	private Game game;
 
-	Game game;
+	/**
+	 * Die Points sind die logischen Koordinaten. In der Summe müssen diese imm
+	 * durch 2 teilbar sein.<br>
+	 * (p.x + p.y % 2) == 0
+	 */
+	private HashMap<Point, Milepost> mileposts = new HashMap<>();
 
 	public Gameboard() {
 
@@ -31,23 +44,66 @@ public class Gameboard {
 			URL url = this.getClass().getResource("/maps/america.xml");
 			InputStream inputStream = url.openConnection().getInputStream();
 			game = (Game) jaxbUnmarshaller.unmarshal(inputStream);
-//				in.close();
-			calcSize();
-			Dimension d = calcSize();
-			System.out.println(String.format("Map %s is %d width and %d height.", game.getName(), d.width, d.height));
-			printMap();
-		} catch (IOException e) {
-			e.printStackTrace();
-
-		} catch (JAXBException e) {
-			// TODO Auto-generated catch block
+			inputStream.close();
+			mapModel();
+		} catch (IOException | JAXBException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void printMap() {
-		game.getCities().getSmallCityOrMediumCityOrMajorCity().forEach(c -> System.out
-				.println(String.format("City: %s, at (%d, %d) is a %s", c.getName(), c.getPositionX(), c.getPositionY(), c.getClass().getSimpleName())));
+	private void mapModel() {
+		int rowIndex = 0;
+		List<Row> row = game.getMap().getRow();
+		for (Row r : row) {
+			mapRow(r, rowIndex++);
+		}
+
+		game.getCities().getSmallCityOrMediumCityOrMajorCity().forEach(c -> mapCity(c));
+	}
+
+	private void mapCity(SmallCity c) {
+		Point location = new Point(c.getPositionX(), c.getPositionY());
+		String name = c.getName();
+		String className = c.getClass().getSimpleName();
+		City city;
+
+		switch (className) {
+		case "SmallCity":
+			city = new City(location.x, location.y, name);
+			mileposts.put(location, city);
+			break;
+		case "MediumCity":
+			city = new MediumCity(location.x, location.y, name);
+			mileposts.put(location, city);
+			break;
+		default:
+			city = new MajorCity(location.x, location.y, name);
+			mileposts.put(location, city);
+			break;
+		}
+	}
+
+	private void mapRow(Row r, int rowIndex) {
+		List<JAXBElement<RowMilepost>> clearOrMountain = r.getClearOrMountain();
+		int column = 0;
+		for (JAXBElement<RowMilepost> rm : clearOrMountain) {
+			column += Optional.ofNullable(rm.getValue().getStart()).orElse(0);
+			column += rm.getValue().getOffset() * 2;
+			if ("mountain".equals(rm.getName().toString())) {
+				for (int i = 0; i < rm.getValue().getLength(); i++) {
+					Point l = new Point(column, rowIndex);
+					mileposts.put(l, new MountainMilepost(l.x, l.y));
+					column += 2;
+				}
+			} else {
+				for (int i = 0; i < rm.getValue().getLength(); i++) {
+					Point l = new Point(column, rowIndex);
+					mileposts.put(l, new Milepost(l.x, l.y));
+					column += 2;
+				}
+			}
+
+		}
 	}
 
 	public List<Row> getRows() {
@@ -75,6 +131,10 @@ public class Gameboard {
 
 	public Dimension getDimension() {
 		return calcSize();
+	}
+
+	public Collection<Milepost> getMileposts() {
+		return mileposts.values();
 	}
 
 }
