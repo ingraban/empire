@@ -23,4 +23,9 @@ jobs:
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '21'
-      - run: mvn verify
+      - run: mvn --batch-mode --update-snapshots verify
+      - run: mkdir staging && cp target/*.dmg staging
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Package
+          path: staging
