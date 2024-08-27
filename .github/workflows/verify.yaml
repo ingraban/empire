@@ -1,17 +1,17 @@
-name: version push
+name: verify on push
 
-#on:
-#  push:
-#    branches:
-#      - main
 on:
-  workflow_call:
-    inputs:
-      username:
-        description: 'A username passed from the caller workflow'
-        default: 'ingraban'
-        required: false
-        type: string
+  push:
+    branches:
+      - main
+#on:
+#  workflow_call:
+#    inputs:
+#      username:
+#        description: 'A username passed from the caller workflow'
+#        default: 'ingraban'
+#        required: false
+#        type: string
 
 jobs:
   build:
