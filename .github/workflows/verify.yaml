@@ -24,7 +24,19 @@ jobs:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '21'
       - run: mvn --batch-mode --update-snapshots verify
-      - run: mkdir staging && cp target/*.dmg staging
+      - run: mkdir staging && cp target/*.dmg staging/Empire.app
+      - name: Codesign executable
+        env: 
+          MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
+          MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_CERTIFICATE_PWD }}
+        run: |
+          echo $MACOS_CERTIFICATE | base64 —decode > certificate.p12
+          security create-keychain -p DDMACOS_CERTIFICATE_PWD build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p DDMACOS_CERTIFICATE_PWD build.keychain
+          security import certificate.p12 -k build.keychain -P $MACOS_CERTIFICATE_PWD -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k DDMACOS_CERTIFICATE_PWD build.keychain
+          /usr/bin/codesign --force -s <identity-id> ./staging/Empire.app -v      
       - uses: actions/upload-artifact@v4
         with:
           name: Package
