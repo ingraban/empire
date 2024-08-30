@@ -26,7 +26,7 @@ jobs:
       - run: mvn --batch-mode --update-snapshots verify
       - run: mkdir staging && cp target/*.dmg staging/Empire.dmg
       - name: Image signieren
-      - env: 
+        env: 
           MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
           MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_CERTIFICATE_PWD }}
         run: |
@@ -37,8 +37,8 @@ jobs:
           security import certificate.p12 -k build.keychain -P $MACOS_CERTIFICATE_PWD -T /usr/bin/codesign
           security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k DDMACOS_CERTIFICATE_PWD build.keychain
           /usr/bin/codesign --force -s "Developer ID Application: MINOVA Information Services GmbH" ./staging/Empire.dmg -v      
-      # - name: Image speichern
-      - uses: actions/upload-artifact@v4
+      - name: Image speichern
+        uses: actions/upload-artifact@v4
         with:
           name: Package
           path: staging
