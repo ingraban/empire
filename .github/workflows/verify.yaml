@@ -37,7 +37,7 @@ jobs:
           security import certificate.p12 -k build.keychain -P $MACOS_CERTIFICATE_PWD -T /usr/bin/codesign
           security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k DDMACOS_CERTIFICATE_PWD build.keychain
           /usr/bin/codesign --force -s "Developer ID Application: MINOVA Information Services GmbH" ./staging/Empire.dmg -v      
-      - name: Image speichern
+      # - name: Image speichern
       - uses: actions/upload-artifact@v4
         with:
           name: Package
