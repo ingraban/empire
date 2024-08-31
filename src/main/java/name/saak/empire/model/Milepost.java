@@ -1,10 +1,13 @@
 package name.saak.empire.model;
 
+import static name.saak.empire.util.MilepostLocator.DISTANCE;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
 import lombok.Data;
+import name.saak.empire.util.MilepostLocator;
 
 @Data
 public class Milepost {
@@ -14,12 +17,6 @@ public class Milepost {
 	 */
 	public static final int MILEPOST_WIDTH = 10;
 	/**
-	 * Der Abstand zwischen 2 Mileposts in einer Zeile.<br/>
-	 * diese Zahl muss durch 4 teilbar sein, damit die Zeilen passen.
-	 */
-	public static final int DISTANCE = 100;
-
-	/**
 	 * Position auf der Karte beginnend bei 0,0
 	 */
 	private Point location;
@@ -28,15 +25,15 @@ public class Milepost {
 		location = new Point(x, y);
 	}
 
+	/**
+	 * paints the milepost image on the graphics context
+	 * 
+	 * @param g graphics context which has to be used for painting
+	 */
 	public void paint(Graphics2D g) {
-		Point gl = getGraphicsLocation();
+		Point gl = MilepostLocator.getGraphicsLocation(location);
 
 		g.setColor(Color.BLACK);
-		g.fillOval(gl.x - 5, gl.y - 5, 10, 10);
+		g.fillOval((int) (gl.x - DISTANCE * 0.05), (int) (gl.y - DISTANCE * 0.05), (int) (DISTANCE * 0.1), (int) (DISTANCE * 0.1));
 	}
-
-	protected Point getGraphicsLocation() {
-		return new Point(location.x * DISTANCE / 2 + DISTANCE / 4, location.y * DISTANCE / 4 + DISTANCE / 4);
-	}
-
 }
