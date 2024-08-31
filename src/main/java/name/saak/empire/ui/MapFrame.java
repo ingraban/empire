@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +25,8 @@ import org.springframework.stereotype.Component;
 public class MapFrame extends JFrame {
 
 	private static final long serialVersionUID = 202408201824L;
+
+	private Logger logger = LoggerFactory.getLogger(MapFrame.class);
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -57,9 +61,8 @@ public class MapFrame extends JFrame {
 
 			@Override
 			public void mouseWheelMoved(MouseWheelEvent e) {
-				System.out.println(
-						String.format("%d & %d = %d (%s) / rotation = %f", e.getModifiersEx(), InputEvent.ALT_DOWN_MASK,
-								e.getModifiersEx() & InputEvent.ALT_DOWN_MASK, "" + e.isShiftDown(), e.getPreciseWheelRotation()));
+				logger.trace("{} & {} = {} ({}) / rotation = {}", e.getModifiersEx(), InputEvent.ALT_DOWN_MASK, e.getModifiersEx() & InputEvent.ALT_DOWN_MASK,
+						"" + e.isShiftDown(), e.getPreciseWheelRotation());
 
 				if ((e.getModifiersEx() & InputEvent.ALT_DOWN_MASK) != InputEvent.ALT_DOWN_MASK) return;
 
@@ -78,7 +81,7 @@ public class MapFrame extends JFrame {
 				Point pc = new Point((int) Math.round((p.x - 25) / 50.0), (int) Math.round(p.y / 25.0));
 				if ((pc.x + pc.y) % 2 > 0) pc = new Point(-1, -1);
 
-				System.out.println(String.format("Mouse click Zoom(%d, %d) -> Draw(%d, %d) -> Coordinate(%d, %d)", pz.x, pz.y, p.x, p.y, pc.x, pc.y));
+				logger.trace("Mouse click Zoom({}, {}) -> Draw({}, {}) -> Coordinate({}, {})", pz.x, pz.y, p.x, p.y, pc.x, pc.y);
 			}
 		});
 	}

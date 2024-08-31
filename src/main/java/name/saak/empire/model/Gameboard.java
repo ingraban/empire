@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import jakarta.xml.bind.JAXBContext;
@@ -25,6 +27,9 @@ import name.saak.empire.schema.SmallCity;
 
 @Component
 public class Gameboard {
+
+	private Logger logger = LoggerFactory.getLogger(Gameboard.class);
+
 	@Getter(AccessLevel.NONE)
 	private Game game;
 
@@ -111,7 +116,7 @@ public class Gameboard {
 	}
 
 	private Dimension calcSize() {
-		if (game == null) System.out.println("No map loaded");
+		if (game == null) logger.warn("No map loaded");
 
 		int rows = game.getMap().getRow().size();
 		int columns = 0;
