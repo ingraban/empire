@@ -6,6 +6,7 @@ import java.awt.Point;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
@@ -28,7 +29,7 @@ public class MapFrame extends JFrame {
 
 	private static final long serialVersionUID = 202408201824L;
 
-	private Logger logger = LoggerFactory.getLogger(MapFrame.class);
+	private transient Logger logger = LoggerFactory.getLogger(MapFrame.class);
 
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -37,7 +38,7 @@ public class MapFrame extends JFrame {
 	 * Create the frame.
 	 */
 	@Autowired
-	public MapFrame(MapPanel mapPanel) {
+	public MapFrame(MapPanel mapPanel, MilepostDetailFrame milepostDetailFrame) {
 		setTitle("Map");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -79,12 +80,25 @@ public class MapFrame extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				double zoomFactor = mapPanel.getZoomFactor();
 				Point pz = e.getPoint();
-				Point p = new Point((int) (pz.x / zoomFactor), (int) (pz.y / zoomFactor));
-				Point pc = MilepostLocator.getMapLocation(p);
+				Point pc = MilepostLocator.getMapLocation(new Point((int) (pz.x / zoomFactor), (int) (pz.y / zoomFactor)));
 
 				if (pc == null) return;
 
-				logger.trace("Mouse click Zoom({}, {}) -> Draw({}, {}) -> Coordinate({}, {})", pz.x, pz.y, p.x, p.y, pc.x, pc.y);
+				logger.trace("Mouse click Zoom({}, {}) with factor{} -> Coordinate({}, {})", pz.x, pz.y, zoomFactor, pc.x, pc.y);
+				milepostDetailFrame.setMilepostLocation(pc, true);
+			}
+		});
+		mapPanel.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				double zoomFactor = mapPanel.getZoomFactor();
+				Point pz = e.getPoint();
+				Point pc = MilepostLocator.getMapLocation(new Point((int) (pz.x / zoomFactor), (int) (pz.y / zoomFactor)));
+
+				if (pc == null) return;
+
+				logger.trace("Mouse click Zoom({}, {}) with factor{} -> Coordinate({}, {})", pz.x, pz.y, zoomFactor, pc.x, pc.y);
+				milepostDetailFrame.setMilepostLocation(pc, false);
 			}
 		});
 	}
