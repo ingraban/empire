@@ -24,6 +24,7 @@ import name.saak.empire.schema.Game;
 import name.saak.empire.schema.Row;
 import name.saak.empire.schema.RowMilepost;
 import name.saak.empire.schema.SmallCity;
+import name.saak.empire.util.MilepostLocator;
 
 @Component
 public class Gameboard {
@@ -58,9 +59,11 @@ public class Gameboard {
 
 	private void mapModel() {
 		int rowIndex = 0;
+		boolean firstRow = true;
 		List<Row> row = game.getMap().getRow();
 		for (Row r : row) {
-			mapRow(r, rowIndex++);
+			mapRow(r, rowIndex++, firstRow);
+			firstRow = false;
 		}
 
 		game.getCities().getSmallCityOrMediumCityOrMajorCity().forEach(c -> mapCity(c));
@@ -88,12 +91,12 @@ public class Gameboard {
 		}
 	}
 
-	private void mapRow(Row r, int rowIndex) {
+	private void mapRow(Row r, int rowIndex, boolean firstRow) {
 		List<JAXBElement<RowMilepost>> clearOrMountain = r.getClearOrMountain();
 		int column = 0;
 		for (JAXBElement<RowMilepost> rm : clearOrMountain) {
 			column += Optional.ofNullable(rm.getValue().getStart()).orElse(0);
-			column += rm.getValue().getOffset() * 2;
+			if (firstRow) MilepostLocator.setOdd(column % 2 != 0);
 			if ("mountain".equals(rm.getName().toString())) {
 				for (int i = 0; i < rm.getValue().getLength(); i++) {
 					Point l = new Point(column, rowIndex);
