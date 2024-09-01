@@ -18,6 +18,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import name.saak.empire.util.MilepostLocator;
+
 /**
  * This frame is used to display the game board
  */
@@ -78,8 +80,9 @@ public class MapFrame extends JFrame {
 				double zoomFactor = mapPanel.getZoomFactor();
 				Point pz = e.getPoint();
 				Point p = new Point((int) (pz.x / zoomFactor), (int) (pz.y / zoomFactor));
-				Point pc = new Point((int) Math.round((p.x - 25) / 50.0), (int) Math.round(p.y / 25.0));
-				if ((pc.x + pc.y) % 2 > 0) pc = new Point(-1, -1);
+				Point pc = MilepostLocator.getMapLocation(p);
+
+				if (pc == null) return;
 
 				logger.trace("Mouse click Zoom({}, {}) -> Draw({}, {}) -> Coordinate({}, {})", pz.x, pz.y, p.x, p.y, pc.x, pc.y);
 			}
