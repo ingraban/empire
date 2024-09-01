@@ -87,6 +87,13 @@ public class Gameboard {
 		default:
 			city = new MajorCity(location.x, location.y, name);
 			mileposts.put(location, city);
+			// Major citoy consists of 7 Mileposts
+			mileposts.put(new Point(location.x + 0, location.y - 2), city); // top
+			mileposts.put(new Point(location.x + 1, location.y - 1), city); // top right
+			mileposts.put(new Point(location.x + 1, location.y + 1), city); // bottom right
+			mileposts.put(new Point(location.x + 0, location.y + 2), city); // bottom
+			mileposts.put(new Point(location.x + 1, location.y + 1), city); // bottom left
+			mileposts.put(new Point(location.x - 1, location.y - 1), city); // top left
 			break;
 		}
 	}
@@ -97,6 +104,7 @@ public class Gameboard {
 		for (JAXBElement<RowMilepost> rm : clearOrMountain) {
 			column += Optional.ofNullable(rm.getValue().getStart()).orElse(0);
 			if (firstRow) MilepostLocator.setOdd(column % 2 != 0);
+			column += rm.getValue().getOffset() * 2;
 			if ("mountain".equals(rm.getName().toString())) {
 				for (int i = 0; i < rm.getValue().getLength(); i++) {
 					Point l = new Point(column, rowIndex);
@@ -143,6 +151,10 @@ public class Gameboard {
 
 	public Collection<Milepost> getMileposts() {
 		return mileposts.values();
+	}
+
+	public Milepost getMilepostAt(Point mapLocation) {
+		return mileposts.get(mapLocation);
 	}
 
 }
