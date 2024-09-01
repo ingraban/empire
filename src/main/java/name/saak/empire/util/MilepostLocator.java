@@ -24,6 +24,10 @@ public class MilepostLocator {
 	 * Radius eines Milepost
 	 */
 	public static final int MILEPOST_RADIUS = DISTANCE / 20;
+	/**
+	 * true, if sum of coordinates must be odd to hit possible milepost
+	 */
+	private static boolean odd;
 
 	private MilepostLocator() {
 	}
@@ -36,6 +40,31 @@ public class MilepostLocator {
 	 */
 	public static Point getGraphicsLocation(Point mapLocation) {
 		return new Point(mapLocation.x * COLUMN_DISTANCE + MARGIN, mapLocation.y * ROW_DISTANCE + MARGIN);
+	}
+
+	/**
+	 * calculate the map location from graphics location
+	 * 
+	 * @param p location in JPanel (without zoom)
+	 * @return map location
+	 */
+	public static Point getMapLocation(Point p) {
+		if ((p.x - MARGIN + COLUMN_DISTANCE) % (COLUMN_DISTANCE) > COLUMN_DISTANCE / 2) p.x += COLUMN_DISTANCE / 2;
+		if ((p.y - MARGIN + ROW_DISTANCE) % (ROW_DISTANCE) > ROW_DISTANCE / 2) p.y += ROW_DISTANCE / 2;
+
+		Point ml = new Point((p.x - MARGIN) / COLUMN_DISTANCE, (p.y - MARGIN) / ROW_DISTANCE);
+		if (((ml.x + ml.y) % 2 == 0) && !odd) return ml;
+		else if (((ml.x + ml.y) % 2 != 0) && odd) return ml;
+		else return null;
+	}
+
+	/**
+	 * 
+	 * @param odd if true, the sum of x and y coordinate for mileposts is odd. If
+	 *            false this sum is even for valid milepost coordinates.
+	 */
+	public static void setOdd(boolean odd) {
+		MilepostLocator.odd = odd;
 	}
 
 }
