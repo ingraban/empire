@@ -1,5 +1,5 @@
 <game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="/Users/saak/git/aero.minova.rcp/bundles/name.saak.empire.model/src/name/saak/empire/model/Game.xsd">
+	xsi:noNamespaceSchemaLocation="eurorails.xsd">
 	<name>Empire Builder</name>
 	<map>
 		<row>
