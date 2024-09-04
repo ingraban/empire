@@ -12,6 +12,7 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import jakarta.xml.bind.JAXBContext;
@@ -20,10 +21,12 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.AccessLevel;
 import lombok.Getter;
+import name.saak.empire.mapper.LoadMapper;
 import name.saak.empire.schema.Game;
 import name.saak.empire.schema.Row;
 import name.saak.empire.schema.RowMilepost;
 import name.saak.empire.schema.SmallCity;
+import name.saak.empire.schema.XmlLoad;
 import name.saak.empire.util.MilepostLocator;
 
 @Component
@@ -41,8 +44,13 @@ public class Gameboard {
 	 */
 	private HashMap<Point, Milepost> mileposts = new HashMap<>();
 
-	public Gameboard() {
+	private LoadMapper loadMapper;
 
+	private HashMap<String, Load> loads = new HashMap<>();
+
+	@Autowired
+	public Gameboard(LoadMapper loadMapper) {
+		this.loadMapper = loadMapper;
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Game.class.getPackageName(), this.getClass().getClassLoader());
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -66,7 +74,8 @@ public class Gameboard {
 			firstRow = false;
 		}
 
-		game.getCities().getSmallCityOrMediumCityOrMajorCity().forEach(c -> mapCity(c));
+		game.getLoads().getLoad().forEach(this::mapLoad);
+		game.getCities().getSmallCityOrMediumCityOrMajorCity().forEach(this::mapCity);
 	}
 
 	private void mapCity(SmallCity c) {
@@ -155,6 +164,19 @@ public class Gameboard {
 
 	public Milepost getMilepostAt(Point mapLocation) {
 		return mileposts.get(mapLocation);
+	}
+
+	/**
+	 * @param id internal id for the load (e.g. "oil")
+	 * @return the Load with that id or null
+	 */
+	public Load getLoad(String id) {
+		return loads.get(id);
+	}
+
+	private void mapLoad(XmlLoad xmlload1) {
+		Load mapLoad = loadMapper.mapLoad(xmlload1);
+		loads.put(mapLoad.getId(), mapLoad);
 	}
 
 }
