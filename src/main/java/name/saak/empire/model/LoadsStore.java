@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import name.saak.empire.schema.Load;
+import name.saak.empire.schema.XmlLoad;
 import name.saak.empire.util.ImageRegistry;
 
 /**
@@ -21,7 +21,7 @@ public class LoadsStore {
 
 	private ImageRegistry imageRegistry;
 
-	private HashMap<String, Load> loads = new HashMap<String, Load>();
+	private HashMap<String, XmlLoad> loads = new HashMap<String, XmlLoad>();
 
 	@Autowired
 	public LoadsStore(ImageRegistry imageRegistry) {
@@ -33,7 +33,7 @@ public class LoadsStore {
 	 * 
 	 * @param load
 	 */
-	public void add(Load load) {
+	public void add(XmlLoad load) {
 		String id = load.getId();
 		loads.computeIfAbsent(id, k -> load);
 	}
@@ -44,11 +44,11 @@ public class LoadsStore {
 	 * @param id
 	 * @return null, wenn die Beladung nicht existiert
 	 */
-	public Load getLoad(String id) {
+	public XmlLoad getLoad(String id) {
 		return loads.get(id);
 	}
 
-	public Image getImage(Load load) {
+	public Image getImage(XmlLoad load) {
 		load = loads.get(load.getId());
 		if (load == null) return null;
 

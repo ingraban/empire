@@ -44,7 +44,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public class Loads {
 
     @XmlElement(required = true)
-    protected List<Load> load;
+    protected List<XmlLoad> load;
 
     /**
      * Gets the value of the load property.
@@ -64,13 +64,13 @@ public class Loads {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Load }
+     * {@link XmlLoad }
      * 
      * 
      */
-    public List<Load> getLoad() {
+    public List<XmlLoad> getLoad() {
         if (load == null) {
-            load = new ArrayList<Load>();
+            load = new ArrayList<XmlLoad>();
         }
         return this.load;
     }

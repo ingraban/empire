@@ -40,7 +40,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "load")
-public class Load {
+public class XmlLoad {
 
     @XmlAttribute(name = "count", required = true)
     protected int count;

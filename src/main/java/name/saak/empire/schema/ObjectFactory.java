@@ -62,11 +62,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Load }
+     * Create an instance of {@link XmlLoad }
      * 
      */
-    public Load createLoad() {
-        return new Load();
+    public XmlLoad createLoad() {
+        return new XmlLoad();
     }
 
     /**
