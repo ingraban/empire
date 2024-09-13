@@ -21,7 +21,7 @@ public class SmallCity extends Milepost {
 
 	private String name;
 
-	private List<Load> loads = new ArrayList<>();
+	private List<String> loads = new ArrayList<>();
 
 	public SmallCity(int x, int y, String name) {
 		super(x, y);
@@ -37,5 +37,9 @@ public class SmallCity extends Milepost {
 		g.setColor(Color.BLACK);
 		g.drawString(getName(), gl.x - g.getFontMetrics().stringWidth(getName()) / 2, gl.y + ROW_DISTANCE);
 		super.paint(g);
+	}
+
+	public void addLoad(String name) {
+		loads.add(name);
 	}
 }
