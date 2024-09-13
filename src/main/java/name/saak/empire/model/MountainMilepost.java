@@ -10,7 +10,7 @@ import name.saak.empire.util.MilepostLocator;
 
 public class MountainMilepost extends Milepost {
 
-	protected MountainMilepost(int x, int y) {
+	public MountainMilepost(int x, int y) {
 		super(x, y);
 	}
 

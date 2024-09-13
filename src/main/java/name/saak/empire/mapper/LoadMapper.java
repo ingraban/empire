@@ -1,5 +1,7 @@
 package name.saak.empire.mapper;
 
+import java.util.Map;
+
 import javax.swing.ImageIcon;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,16 @@ public class LoadMapper {
 		Load l = new Load();
 		ImageIcon icon = imageRegistry.getIcon("/icons/" + xl.getId() + ".iconset/icon_512x512.png");
 
+		l.setId(xl.getId());
 		l.setIcon((icon == null) ? null : icon);
 		l.setInitialCount(xl.getCount());
 		l.setName(xl.getName());
 		return l;
+	}
+
+	public void mapLoad(Map<String, Load> loads, XmlLoad xmlload) {
+		Load l = mapLoad(xmlload);
+		loads.put(l.getId(), l);
 	}
 
 }

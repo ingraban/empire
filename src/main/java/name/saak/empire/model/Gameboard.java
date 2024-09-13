@@ -21,13 +21,12 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.AccessLevel;
 import lombok.Getter;
+import name.saak.empire.mapper.CityMapper;
 import name.saak.empire.mapper.LoadMapper;
+import name.saak.empire.mapper.RowMapper;
 import name.saak.empire.schema.Game;
 import name.saak.empire.schema.Row;
 import name.saak.empire.schema.RowMilepost;
-import name.saak.empire.schema.SmallCity;
-import name.saak.empire.schema.XmlLoad;
-import name.saak.empire.util.MilepostLocator;
 
 @Component
 public class Gameboard {
@@ -46,11 +45,18 @@ public class Gameboard {
 
 	private LoadMapper loadMapper;
 
+	private RowMapper rowMapper;
+
 	private HashMap<String, Load> loads = new HashMap<>();
 
+	private CityMapper cityMapper;
+
 	@Autowired
-	public Gameboard(LoadMapper loadMapper) {
+	public Gameboard(CityMapper cityMapper, LoadMapper loadMapper, RowMapper rowMapper) {
+		this.cityMapper = cityMapper;
 		this.loadMapper = loadMapper;
+		this.rowMapper = rowMapper;
+
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Game.class.getPackageName(), this.getClass().getClassLoader());
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -70,77 +76,24 @@ public class Gameboard {
 		boolean firstRow = true;
 		List<Row> row = game.getMap().getRow();
 		for (Row r : row) {
-			mapRow(r, rowIndex++, firstRow);
+			rowMapper.mapRow(mileposts, r, rowIndex++, firstRow);
 			firstRow = false;
 		}
 
-		game.getLoads().getLoad().forEach(this::mapLoad);
-		game.getCities().getSmallCityOrMediumCityOrMajorCity().forEach(this::mapCity);
-	}
-
-	private void mapCity(SmallCity c) {
-		Point location = new Point(c.getPositionX(), c.getPositionY());
-		String name = c.getName();
-		String className = c.getClass().getSimpleName();
-		City city;
-
-		switch (className) {
-		case "SmallCity":
-			city = new City(location.x, location.y, name);
-			mileposts.put(location, city);
-			break;
-		case "MediumCity":
-			city = new MediumCity(location.x, location.y, name);
-			mileposts.put(location, city);
-			break;
-		default:
-			city = new MajorCity(location.x, location.y, name);
-			mileposts.put(location, city);
-			// Major citoy consists of 7 Mileposts
-			mileposts.put(new Point(location.x + 0, location.y - 2), city); // top
-			mileposts.put(new Point(location.x + 1, location.y - 1), city); // top right
-			mileposts.put(new Point(location.x + 1, location.y + 1), city); // bottom right
-			mileposts.put(new Point(location.x + 0, location.y + 2), city); // bottom
-			mileposts.put(new Point(location.x + 1, location.y + 1), city); // bottom left
-			mileposts.put(new Point(location.x - 1, location.y - 1), city); // top left
-			break;
-		}
-	}
-
-	private void mapRow(Row r, int rowIndex, boolean firstRow) {
-		List<JAXBElement<RowMilepost>> clearOrMountain = r.getClearOrMountain();
-		int column = 0;
-		for (JAXBElement<RowMilepost> rm : clearOrMountain) {
-			column += Optional.ofNullable(rm.getValue().getStart()).orElse(0);
-			if (firstRow) MilepostLocator.setOdd(column % 2 != 0);
-			column += rm.getValue().getOffset() * 2;
-			if ("mountain".equals(rm.getName().toString())) {
-				for (int i = 0; i < rm.getValue().getLength(); i++) {
-					Point l = new Point(column, rowIndex);
-					mileposts.put(l, new MountainMilepost(l.x, l.y));
-					column += 2;
-				}
-			} else {
-				for (int i = 0; i < rm.getValue().getLength(); i++) {
-					Point l = new Point(column, rowIndex);
-					mileposts.put(l, new Milepost(l.x, l.y));
-					column += 2;
-				}
-			}
-
-		}
-	}
-
-	public List<Row> getRows() {
-		return game.getMap().getRow();
+		game.getLoads().getLoad().forEach(l -> loadMapper.mapLoad(loads, l));
+		game.getCities().getSmallCityOrMediumCityOrMajorCity().forEach(c -> cityMapper.mapCity(mileposts, c));
 	}
 
 	private Dimension calcSize() {
-		if (game == null) logger.warn("No map loaded");
+		if (game == null) {
+			logger.warn("No map loaded");
+			return new Dimension(0, 0);
+		}
 
 		int rows = game.getMap().getRow().size();
 		int columns = 0;
-		int start, cols;
+		int start;
+		int cols;
 
 		for (Row r : game.getMap().getRow()) {
 			start = Optional.ofNullable(r.getClearOrMountain().getFirst().getValue().getStart()).orElse(0);
@@ -173,10 +126,4 @@ public class Gameboard {
 	public Load getLoad(String id) {
 		return loads.get(id);
 	}
-
-	private void mapLoad(XmlLoad xmlload1) {
-		Load mapLoad = loadMapper.mapLoad(xmlload1);
-		loads.put(mapLoad.getId(), mapLoad);
-	}
-
 }

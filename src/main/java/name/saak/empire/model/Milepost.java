@@ -21,7 +21,7 @@ public class Milepost {
 	 */
 	private Point location;
 
-	protected Milepost(int x, int y) {
+	public Milepost(int x, int y) {
 		location = new Point(x, y);
 	}
 

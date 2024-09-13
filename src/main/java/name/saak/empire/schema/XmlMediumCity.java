@@ -30,8 +30,8 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "medium-city")
-public class MediumCity
-    extends SmallCity
+public class XmlMediumCity
+    extends XmlSmallCity
 {
 
 

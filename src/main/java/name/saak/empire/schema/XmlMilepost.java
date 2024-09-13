@@ -35,9 +35,9 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "milepost")
 @XmlSeeAlso({
-    SmallCity.class
+    XmlSmallCity.class
 })
-public class Milepost {
+public class XmlMilepost {
 
     @XmlAttribute(name = "position-x", required = true)
     protected int positionX;

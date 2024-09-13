@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import lombok.EqualsAndHashCode;
-import name.saak.empire.model.City;
+import name.saak.empire.model.SmallCity;
 import name.saak.empire.model.Gameboard;
 import name.saak.empire.model.Milepost;
 
@@ -144,11 +144,11 @@ final class MilepostDetailPanel extends JPanel {
 		fieldType.setText(mp.getClass().getSimpleName());
 
 		// City data
-		if (!(mp instanceof City)) {
+		if (!(mp instanceof SmallCity)) {
 			fieldName.setText("");
 			return;
 		}
-		fieldName.setText(((City) mp).getName());
+		fieldName.setText(((SmallCity) mp).getName());
 	}
 
 }

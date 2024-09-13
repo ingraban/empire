@@ -15,7 +15,7 @@ import name.saak.empire.util.MilepostLocator;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class MajorCity extends City {
+public class MajorCity extends SmallCity {
 
 	public MajorCity(int x, int y, String name) {
 		super(x, y, name);

@@ -78,27 +78,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SmallCity }
+     * Create an instance of {@link XmlSmallCity }
      * 
      */
-    public SmallCity createSmallCity() {
-        return new SmallCity();
+    public XmlSmallCity createSmallCity() {
+        return new XmlSmallCity();
     }
 
     /**
-     * Create an instance of {@link MediumCity }
+     * Create an instance of {@link XmlMediumCity }
      * 
      */
-    public MediumCity createMediumCity() {
-        return new MediumCity();
+    public XmlMediumCity createMediumCity() {
+        return new XmlMediumCity();
     }
 
     /**
-     * Create an instance of {@link MajorCity }
+     * Create an instance of {@link XmlMajorCity }
      * 
      */
-    public MajorCity createMajorCity() {
-        return new MajorCity();
+    public XmlMajorCity createMajorCity() {
+        return new XmlMajorCity();
     }
 
     /**
@@ -158,11 +158,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Milepost }
+     * Create an instance of {@link XmlMilepost }
      * 
      */
-    public Milepost createMilepost() {
-        return new Milepost();
+    public XmlMilepost createMilepost() {
+        return new XmlMilepost();
     }
 
     /**
@@ -196,10 +196,10 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "load", scope = SmallCity.class)
+    @XmlElementDecl(namespace = "", name = "load", scope = XmlSmallCity.class)
     @XmlIDREF
     public JAXBElement<Object> createSmallCityLoad(Object value) {
-        return new JAXBElement<Object>(_SmallCityLoad_QNAME, Object.class, SmallCity.class, value);
+        return new JAXBElement<Object>(_SmallCityLoad_QNAME, Object.class, XmlSmallCity.class, value);
     }
 
 }

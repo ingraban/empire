@@ -49,11 +49,11 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "load"
 })
 @XmlSeeAlso({
-    MediumCity.class,
-    MajorCity.class
+    XmlMediumCity.class,
+    XmlMajorCity.class
 })
-public class SmallCity
-    extends Milepost
+public class XmlSmallCity
+    extends XmlMilepost
 {
 
     @XmlElementRef(name = "load", type = JAXBElement.class, required = false)

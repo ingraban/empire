@@ -12,7 +12,7 @@ import name.saak.empire.util.MilepostLocator;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class MediumCity extends City {
+public class MediumCity extends SmallCity {
 
 	public MediumCity(int x, int y, String name) {
 		super(x, y, name);

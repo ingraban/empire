@@ -15,7 +15,7 @@ import name.saak.empire.util.MilepostLocator;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class City extends Milepost {
+public class SmallCity extends Milepost {
 
 	protected static final int CITY_RADIUS = (int) (DISTANCE * 0.15);
 
@@ -23,7 +23,7 @@ public class City extends Milepost {
 
 	private List<Load> loads = new ArrayList<>();
 
-	public City(int x, int y, String name) {
+	public SmallCity(int x, int y, String name) {
 		super(x, y);
 		setName(name);
 	}

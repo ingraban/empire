@@ -32,8 +32,8 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "major-city")
-public class MajorCity
-    extends SmallCity
+public class XmlMajorCity
+    extends XmlSmallCity
 {
 
     @XmlAttribute(name = "radius")

@@ -50,10 +50,10 @@ public class Cities {
 
     @XmlElements({
         @XmlElement(name = "small-city"),
-        @XmlElement(name = "medium-city", type = MediumCity.class),
-        @XmlElement(name = "major-city", type = MajorCity.class)
+        @XmlElement(name = "medium-city", type = XmlMediumCity.class),
+        @XmlElement(name = "major-city", type = XmlMajorCity.class)
     })
-    protected List<SmallCity> smallCityOrMediumCityOrMajorCity;
+    protected List<XmlSmallCity> smallCityOrMediumCityOrMajorCity;
 
     /**
      * Gets the value of the smallCityOrMediumCityOrMajorCity property.
@@ -73,15 +73,15 @@ public class Cities {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link SmallCity }
-     * {@link MediumCity }
-     * {@link MajorCity }
+     * {@link XmlSmallCity }
+     * {@link XmlMediumCity }
+     * {@link XmlMajorCity }
      * 
      * 
      */
-    public List<SmallCity> getSmallCityOrMediumCityOrMajorCity() {
+    public List<XmlSmallCity> getSmallCityOrMediumCityOrMajorCity() {
         if (smallCityOrMediumCityOrMajorCity == null) {
-            smallCityOrMediumCityOrMajorCity = new ArrayList<SmallCity>();
+            smallCityOrMediumCityOrMajorCity = new ArrayList<XmlSmallCity>();
         }
         return this.smallCityOrMediumCityOrMajorCity;
     }
