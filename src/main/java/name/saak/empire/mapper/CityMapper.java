@@ -20,11 +20,11 @@ public class CityMapper {
 		SmallCity mc; // Modell City
 
 		switch (className) {
-		case "SmallCity":
+		case "XmlSmallCity":
 			mc = new SmallCity(location.x, location.y, name);
 			mileposts.put(location, mc);
 			break;
-		case "MediumCity":
+		case "XmlMediumCity":
 			mc = new MediumCity(location.x, location.y, name);
 			mileposts.put(location, mc);
 			break;

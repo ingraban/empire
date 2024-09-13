@@ -24,7 +24,7 @@ class CityMapperTest {
 		c.setId("smallcity");
 		cm.mapCity(mileposts, c);
 		assertEquals(1, mileposts.size(), "Size of mileposts");
-		assertEquals("City", mileposts.get(new Point(0, 0)).getClass().getSimpleName(), "Type of SmallCity");
+		assertEquals("SmallCity", mileposts.get(new Point(0, 0)).getClass().getSimpleName(), "Type of SmallCity");
 	}
 
 }
