@@ -13,6 +13,7 @@ import name.saak.empire.schema.XmlSmallCity;
 
 @Service
 public class CityMapper {
+
 	public void mapCity(Map<Point, Milepost> mileposts, XmlSmallCity xc) {
 		Point location = new Point(xc.getPositionX(), xc.getPositionY());
 		String name = xc.getName();
@@ -40,6 +41,10 @@ public class CityMapper {
 			mileposts.put(new Point(location.x - 1, location.y - 1), mc); // top left
 			break;
 		}
-	}
 
+		xc.getLoad().forEach(l -> {
+			String loadName = l.getName().toString();
+			mc.addLoad(loadName);
+		});
+	}
 }

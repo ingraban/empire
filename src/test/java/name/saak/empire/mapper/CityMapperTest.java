@@ -14,6 +14,7 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import name.saak.empire.model.Milepost;
+import name.saak.empire.model.SmallCity;
 import name.saak.empire.schema.Game;
 import name.saak.empire.schema.XmlSmallCity;
 
@@ -55,17 +56,14 @@ class CityMapperTest {
 	}
 
 	@Test
-	void testSmallCity() {
+	void testSmallCity() throws JAXBException {
+		Game game = (Game) jaxbUnmarshaller.unmarshal(new StringReader(BUFFALO));
+
 		Map<Point, Milepost> mileposts = new HashMap<>();
 		CityMapper cm = new CityMapper();
-		XmlSmallCity c = new XmlSmallCity();
-		c.setName("SmallCity");
-		c.setPositionX(0);
-		c.setPositionY(0);
-		c.setId("smallcity");
-		cm.mapCity(mileposts, c);
+		cm.mapCity(mileposts, game.getCities().getSmallCityOrMediumCityOrMajorCity().get(0));
 		assertEquals(1, mileposts.size(), "Size of mileposts");
-		assertEquals("SmallCity", mileposts.get(new Point(0, 0)).getClass().getSimpleName(), "Type of SmallCity");
+		assertEquals("SmallCity", mileposts.get(new Point(50, 21)).getClass().getSimpleName(), "Type of SmallCity");
 	}
 
 	@Test
@@ -75,7 +73,7 @@ class CityMapperTest {
 		Map<Point, Milepost> mileposts = new HashMap<>();
 		CityMapper cm = new CityMapper();
 		cm.mapCity(mileposts, game.getCities().getSmallCityOrMediumCityOrMajorCity().get(0));
-		assertEquals(1, mileposts.size(), "Size of mileposts");
-		assertEquals("SmallCity", mileposts.get(new Point(50, 21)).getClass().getSimpleName(), "Type of SmallCity");
+		SmallCity sc = (SmallCity) mileposts.get(new Point(50, 21));
+		assertEquals(1, sc.getLoads().size(), "Size of loads");
 	}
 }
