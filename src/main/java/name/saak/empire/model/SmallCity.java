@@ -29,14 +29,24 @@ public class SmallCity extends Milepost {
 	}
 
 	@Override
-	public void paint(Graphics2D g) {
+	public void paint(Graphics2D g, Gameboard board) {
 		Point gl = MilepostLocator.getGraphicsLocation(getLocation());
 
 		g.setColor(Color.RED);
 		g.fillOval(gl.x - CITY_RADIUS, gl.y - CITY_RADIUS, CITY_RADIUS * 2, CITY_RADIUS * 2);
 		g.setColor(Color.BLACK);
 		g.drawString(getName(), gl.x - g.getFontMetrics().stringWidth(getName()) / 2, gl.y + ROW_DISTANCE);
-		super.paint(g);
+		paintLoads(g, board);
+		super.paint(g, board);
+	}
+
+	protected void paintLoads(Graphics2D g, Gameboard board) {
+		Point gl = MilepostLocator.getGraphicsLocation(getLocation());
+		int y = gl.y + ROW_DISTANCE * 2;
+		for (String load : loads) {
+			g.drawString(load, gl.x - g.getFontMetrics().stringWidth(load) / 2, y);
+			y += ROW_DISTANCE;
+		}
 	}
 
 	public void addLoad(String name) {

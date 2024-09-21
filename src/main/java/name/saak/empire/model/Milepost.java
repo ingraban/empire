@@ -28,9 +28,10 @@ public class Milepost {
 	/**
 	 * paints the milepost image on the graphics context
 	 * 
-	 * @param g graphics context which has to be used for painting
+	 * @param g     graphics context which has to be used for painting
+	 * @param board
 	 */
-	public void paint(Graphics2D g) {
+	public void paint(Graphics2D g, Gameboard board) {
 		Point gl = MilepostLocator.getGraphicsLocation(location);
 
 		g.setColor(Color.BLACK);

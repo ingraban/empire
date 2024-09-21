@@ -19,11 +19,11 @@ public class MediumCity extends SmallCity {
 	}
 
 	@Override
-	public void paint(Graphics2D g) {
+	public void paint(Graphics2D g, Gameboard board) {
 		Point gl = MilepostLocator.getGraphicsLocation(getLocation());
 
 		g.setColor(Color.RED);
 		g.fillRect((int) (gl.x - DISTANCE * 0.15), (int) (gl.y - DISTANCE * 0.15), (int) (DISTANCE * 0.3), (int) (DISTANCE * 0.3));
-		super.paint(g);
+		super.paint(g, board);
 	}
 }

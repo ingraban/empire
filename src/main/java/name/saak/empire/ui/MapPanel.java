@@ -46,7 +46,7 @@ final class MapPanel extends JPanel {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.scale(zoomFactor, zoomFactor);
 
-		board.getMileposts().stream().forEach(m -> m.paint(g2));
+		board.getMileposts().stream().forEach(m -> m.paint(g2, board));
 	}
 
 	@Override

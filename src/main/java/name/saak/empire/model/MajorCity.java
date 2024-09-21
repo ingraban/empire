@@ -22,7 +22,7 @@ public class MajorCity extends SmallCity {
 	}
 
 	@Override
-	public void paint(Graphics2D g) {
+	public void paint(Graphics2D g, Gameboard board) {
 		Point gl = MilepostLocator.getGraphicsLocation(getLocation());
 
 		g.setColor(Color.RED);
