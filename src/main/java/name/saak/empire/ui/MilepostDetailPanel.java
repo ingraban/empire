@@ -10,15 +10,16 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.TableColumn;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import lombok.EqualsAndHashCode;
-import name.saak.empire.model.SmallCity;
 import name.saak.empire.model.Gameboard;
 import name.saak.empire.model.Milepost;
+import name.saak.empire.model.SmallCity;
 
 @EqualsAndHashCode(callSuper = true)
 @Component
@@ -117,7 +118,8 @@ final class MilepostDetailPanel extends JPanel {
 		fieldName.setColumns(10);
 
 		tblLoads = new JTable();
-		tblLoads.setBorder(new TitledBorder(null, "Loads", TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		// tblLoads.setBorder(new TitledBorder(null, "Loads", TitledBorder.LEFT,
+		// TitledBorder.TOP, null, null));
 		GridBagConstraints gbc_tblLoads = new GridBagConstraints();
 		gbc_tblLoads.insets = new Insets(5, 5, 5, 0);
 		gbc_tblLoads.gridwidth = 3;
@@ -125,6 +127,12 @@ final class MilepostDetailPanel extends JPanel {
 		gbc_tblLoads.gridx = 0;
 		gbc_tblLoads.gridy = 3;
 		add(tblLoads, gbc_tblLoads);
+
+		DefaultTableColumnModel columnModel = new DefaultTableColumnModel();
+		tblLoads.setColumnModel(columnModel);
+		TableColumn loadTableColumn = new TableColumn(0);
+		loadTableColumn.setHeaderValue("Load name");
+		columnModel.addColumn(loadTableColumn);
 	}
 
 	public void setMilepostLocation(Point mapLocation, boolean show) {
@@ -149,6 +157,7 @@ final class MilepostDetailPanel extends JPanel {
 			return;
 		}
 		fieldName.setText(((SmallCity) mp).getName());
+		tblLoads.setModel(new LoadTableModel(((SmallCity) mp).getLoads()));
 	}
 
 }
