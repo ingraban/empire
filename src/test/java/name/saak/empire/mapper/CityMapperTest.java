@@ -15,7 +15,7 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import name.saak.empire.model.Milepost;
 import name.saak.empire.model.SmallCity;
-import name.saak.empire.schema.Game;
+import name.saak.empire.schema.XmlGame;
 import name.saak.empire.schema.XmlSmallCity;
 
 class CityMapperTest {
@@ -57,7 +57,7 @@ class CityMapperTest {
 
 	@Test
 	void testSmallCity() throws JAXBException {
-		Game game = (Game) jaxbUnmarshaller.unmarshal(new StringReader(BUFFALO));
+		XmlGame game = (XmlGame) jaxbUnmarshaller.unmarshal(new StringReader(BUFFALO));
 
 		Map<Point, Milepost> mileposts = new HashMap<>();
 		CityMapper cm = new CityMapper();
@@ -68,12 +68,13 @@ class CityMapperTest {
 
 	@Test
 	void testLoad() throws JAXBException {
-		Game game = (Game) jaxbUnmarshaller.unmarshal(new StringReader(BUFFALO));
+		XmlGame game = (XmlGame) jaxbUnmarshaller.unmarshal(new StringReader(BUFFALO));
 
 		Map<Point, Milepost> mileposts = new HashMap<>();
 		CityMapper cm = new CityMapper();
 		cm.mapCity(mileposts, game.getCities().getSmallCityOrMediumCityOrMajorCity().get(0));
 		SmallCity sc = (SmallCity) mileposts.get(new Point(50, 21));
 		assertEquals(1, sc.getLoads().size(), "Size of loads");
+		assertEquals("machinery", sc.getLoads().getFirst(), "name of load");
 	}
 }
