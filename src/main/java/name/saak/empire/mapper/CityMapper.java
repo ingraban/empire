@@ -9,6 +9,7 @@ import name.saak.empire.model.MajorCity;
 import name.saak.empire.model.MediumCity;
 import name.saak.empire.model.Milepost;
 import name.saak.empire.model.SmallCity;
+import name.saak.empire.schema.XmlLoad;
 import name.saak.empire.schema.XmlSmallCity;
 
 @Service
@@ -43,7 +44,7 @@ public class CityMapper {
 		}
 
 		xc.getLoad().forEach(l -> {
-			String loadName = l.getName().toString();
+			String loadName = ((XmlLoad) l.getValue()).getId();
 			mc.addLoad(loadName);
 		});
 	}

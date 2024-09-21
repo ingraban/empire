@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "smallCityOrMediumCityOrMajorCity"
 })
 @XmlRootElement(name = "cities")
-public class Cities {
+public class XmlCities {
 
     @XmlElements({
         @XmlElement(name = "small-city"),

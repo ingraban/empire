@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 @XmlRootElement(name = "demand")
-public class Demand {
+public class XmlDemand {
 
     @XmlAttribute(name = "city", required = true)
     @XmlIDREF

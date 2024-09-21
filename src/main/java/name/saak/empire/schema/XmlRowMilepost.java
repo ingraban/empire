@@ -34,7 +34,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "row-milepost")
-public class RowMilepost {
+public class XmlRowMilepost {
 
     @XmlAttribute(name = "length")
     protected Integer length;

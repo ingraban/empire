@@ -44,13 +44,13 @@ import jakarta.xml.bind.annotation.XmlType;
     "clearOrMountain"
 })
 @XmlRootElement(name = "row")
-public class Row {
+public class XmlRow {
 
     @XmlElementRefs({
         @XmlElementRef(name = "clear", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "mountain", type = JAXBElement.class, required = false)
     })
-    protected List<JAXBElement<RowMilepost>> clearOrMountain;
+    protected List<JAXBElement<XmlRowMilepost>> clearOrMountain;
 
     /**
      * Gets the value of the clearOrMountain property.
@@ -70,14 +70,14 @@ public class Row {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link RowMilepost }{@code >}
-     * {@link JAXBElement }{@code <}{@link RowMilepost }{@code >}
+     * {@link JAXBElement }{@code <}{@link XmlRowMilepost }{@code >}
+     * {@link JAXBElement }{@code <}{@link XmlRowMilepost }{@code >}
      * 
      * 
      */
-    public List<JAXBElement<RowMilepost>> getClearOrMountain() {
+    public List<JAXBElement<XmlRowMilepost>> getClearOrMountain() {
         if (clearOrMountain == null) {
-            clearOrMountain = new ArrayList<JAXBElement<RowMilepost>>();
+            clearOrMountain = new ArrayList<JAXBElement<XmlRowMilepost>>();
         }
         return this.clearOrMountain;
     }

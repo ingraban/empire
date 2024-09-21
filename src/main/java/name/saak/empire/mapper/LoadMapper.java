@@ -23,7 +23,7 @@ public class LoadMapper {
 
 	public Load mapLoad(XmlLoad xl) {
 		Load l = new Load();
-		ImageIcon icon = imageRegistry.getIcon("/icons/" + xl.getId() + ".iconset/icon_512x512.png");
+		ImageIcon icon = imageRegistry.getIcon("/icons/" + xl.getId() + ".iconset/icon_256x256.png");
 
 		l.setId(xl.getId());
 		l.setIcon((icon == null) ? null : icon);

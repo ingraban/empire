@@ -24,9 +24,10 @@ import lombok.Getter;
 import name.saak.empire.mapper.CityMapper;
 import name.saak.empire.mapper.LoadMapper;
 import name.saak.empire.mapper.RowMapper;
-import name.saak.empire.schema.Game;
-import name.saak.empire.schema.Row;
-import name.saak.empire.schema.RowMilepost;
+import name.saak.empire.schema.XmlGame;
+import name.saak.empire.schema.XmlRow;
+import name.saak.empire.schema.XmlRowMilepost;
+import name.saak.empire.util.ImageRegistry;
 
 @Component
 public class Gameboard {
@@ -34,7 +35,7 @@ public class Gameboard {
 	private Logger logger = LoggerFactory.getLogger(Gameboard.class);
 
 	@Getter(AccessLevel.NONE)
-	private Game game;
+	private XmlGame game;
 
 	/**
 	 * Die Points sind die logischen Koordinaten. In der Summe müssen diese imm
@@ -51,19 +52,22 @@ public class Gameboard {
 
 	private CityMapper cityMapper;
 
+	private ImageRegistry imageRegistry;
+
 	@Autowired
-	public Gameboard(CityMapper cityMapper, LoadMapper loadMapper, RowMapper rowMapper) {
+	public Gameboard(CityMapper cityMapper, LoadMapper loadMapper, RowMapper rowMapper, ImageRegistry imageRegistry) {
 		this.cityMapper = cityMapper;
 		this.loadMapper = loadMapper;
 		this.rowMapper = rowMapper;
+		this.imageRegistry = imageRegistry;
 
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(Game.class.getPackageName(), this.getClass().getClassLoader());
+			JAXBContext jaxbContext = JAXBContext.newInstance(XmlGame.class.getPackageName(), this.getClass().getClassLoader());
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
 			URL url = this.getClass().getResource("/maps/america.xml");
 			InputStream inputStream = url.openConnection().getInputStream();
-			game = (Game) jaxbUnmarshaller.unmarshal(inputStream);
+			game = (XmlGame) jaxbUnmarshaller.unmarshal(inputStream);
 			inputStream.close();
 			mapModel();
 		} catch (IOException | JAXBException e) {
@@ -74,8 +78,8 @@ public class Gameboard {
 	private void mapModel() {
 		int rowIndex = 0;
 		boolean firstRow = true;
-		List<Row> row = game.getMap().getRow();
-		for (Row r : row) {
+		List<XmlRow> row = game.getMap().getRow();
+		for (XmlRow r : row) {
 			rowMapper.mapRow(mileposts, r, rowIndex++, firstRow);
 			firstRow = false;
 		}
@@ -95,10 +99,10 @@ public class Gameboard {
 		int start;
 		int cols;
 
-		for (Row r : game.getMap().getRow()) {
+		for (XmlRow r : game.getMap().getRow()) {
 			start = Optional.ofNullable(r.getClearOrMountain().getFirst().getValue().getStart()).orElse(0);
 			cols = 0;
-			for (JAXBElement<RowMilepost> rm : r.getClearOrMountain()) {
+			for (JAXBElement<XmlRowMilepost> rm : r.getClearOrMountain()) {
 				cols += rm.getValue().getLength();
 			}
 			if ((start + cols * 2 - 1) > columns) //
@@ -125,5 +129,12 @@ public class Gameboard {
 	 */
 	public Load getLoad(String id) {
 		return loads.get(id);
+	}
+
+	/**
+	 * @return ImageRegistry for icons
+	 */
+	public ImageRegistry getImageRegistry() {
+		return imageRegistry;
 	}
 }

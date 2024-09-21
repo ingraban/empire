@@ -44,10 +44,10 @@ import jakarta.xml.bind.annotation.XmlType;
     "demand"
 })
 @XmlRootElement(name = "demand-card")
-public class DemandCard {
+public class XmlDemandCard {
 
     @XmlElement(required = true)
-    protected List<Demand> demand;
+    protected List<XmlDemand> demand;
     @XmlAttribute(name = "id", required = true)
     protected BigInteger id;
 
@@ -69,13 +69,13 @@ public class DemandCard {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Demand }
+     * {@link XmlDemand }
      * 
      * 
      */
-    public List<Demand> getDemand() {
+    public List<XmlDemand> getDemand() {
         if (demand == null) {
-            demand = new ArrayList<Demand>();
+            demand = new ArrayList<XmlDemand>();
         }
         return this.demand;
     }

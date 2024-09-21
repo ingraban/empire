@@ -47,18 +47,18 @@ import jakarta.xml.bind.annotation.XmlType;
     "cards"
 })
 @XmlRootElement(name = "game")
-public class Game {
+public class XmlGame {
 
     @XmlElement(required = true)
     protected String name;
     @XmlElement(required = true)
-    protected Map map;
+    protected XmlMap map;
     @XmlElement(required = true)
-    protected Loads loads;
+    protected XmlLoads loads;
     @XmlElement(required = true)
-    protected Cities cities;
+    protected XmlCities cities;
     @XmlElement(required = true)
-    protected Cards cards;
+    protected XmlCards cards;
 
     /**
      * Gets the value of the name property.
@@ -89,10 +89,10 @@ public class Game {
      * 
      * @return
      *     possible object is
-     *     {@link Map }
+     *     {@link XmlMap }
      *     
      */
-    public Map getMap() {
+    public XmlMap getMap() {
         return map;
     }
 
@@ -101,10 +101,10 @@ public class Game {
      * 
      * @param value
      *     allowed object is
-     *     {@link Map }
+     *     {@link XmlMap }
      *     
      */
-    public void setMap(Map value) {
+    public void setMap(XmlMap value) {
         this.map = value;
     }
 
@@ -113,10 +113,10 @@ public class Game {
      * 
      * @return
      *     possible object is
-     *     {@link Loads }
+     *     {@link XmlLoads }
      *     
      */
-    public Loads getLoads() {
+    public XmlLoads getLoads() {
         return loads;
     }
 
@@ -125,10 +125,10 @@ public class Game {
      * 
      * @param value
      *     allowed object is
-     *     {@link Loads }
+     *     {@link XmlLoads }
      *     
      */
-    public void setLoads(Loads value) {
+    public void setLoads(XmlLoads value) {
         this.loads = value;
     }
 
@@ -137,10 +137,10 @@ public class Game {
      * 
      * @return
      *     possible object is
-     *     {@link Cities }
+     *     {@link XmlCities }
      *     
      */
-    public Cities getCities() {
+    public XmlCities getCities() {
         return cities;
     }
 
@@ -149,10 +149,10 @@ public class Game {
      * 
      * @param value
      *     allowed object is
-     *     {@link Cities }
+     *     {@link XmlCities }
      *     
      */
-    public void setCities(Cities value) {
+    public void setCities(XmlCities value) {
         this.cities = value;
     }
 
@@ -161,10 +161,10 @@ public class Game {
      * 
      * @return
      *     possible object is
-     *     {@link Cards }
+     *     {@link XmlCards }
      *     
      */
-    public Cards getCards() {
+    public XmlCards getCards() {
         return cards;
     }
 
@@ -173,10 +173,10 @@ public class Game {
      * 
      * @param value
      *     allowed object is
-     *     {@link Cards }
+     *     {@link XmlCards }
      *     
      */
-    public void setCards(Cards value) {
+    public void setCards(XmlCards value) {
         this.cards = value;
     }
 

@@ -46,19 +46,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RowMilepost }
+     * Create an instance of {@link XmlRowMilepost }
      * 
      */
-    public RowMilepost createRowMilepost() {
-        return new RowMilepost();
+    public XmlRowMilepost createRowMilepost() {
+        return new XmlRowMilepost();
     }
 
     /**
-     * Create an instance of {@link Loads }
+     * Create an instance of {@link XmlLoads }
      * 
      */
-    public Loads createLoads() {
-        return new Loads();
+    public XmlLoads createLoads() {
+        return new XmlLoads();
     }
 
     /**
@@ -70,11 +70,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Cities }
+     * Create an instance of {@link XmlCities }
      * 
      */
-    public Cities createCities() {
-        return new Cities();
+    public XmlCities createCities() {
+        return new XmlCities();
     }
 
     /**
@@ -102,59 +102,59 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Map }
+     * Create an instance of {@link XmlMap }
      * 
      */
-    public Map createMap() {
-        return new Map();
+    public XmlMap createMap() {
+        return new XmlMap();
     }
 
     /**
-     * Create an instance of {@link Row }
+     * Create an instance of {@link XmlRow }
      * 
      */
-    public Row createRow() {
-        return new Row();
+    public XmlRow createRow() {
+        return new XmlRow();
     }
 
     /**
-     * Create an instance of {@link Game }
+     * Create an instance of {@link XmlGame }
      * 
      */
-    public Game createGame() {
-        return new Game();
+    public XmlGame createGame() {
+        return new XmlGame();
     }
 
     /**
-     * Create an instance of {@link Cards }
+     * Create an instance of {@link XmlCards }
      * 
      */
-    public Cards createCards() {
-        return new Cards();
+    public XmlCards createCards() {
+        return new XmlCards();
     }
 
     /**
-     * Create an instance of {@link DemandCard }
+     * Create an instance of {@link XmlDemandCard }
      * 
      */
-    public DemandCard createDemandCard() {
-        return new DemandCard();
+    public XmlDemandCard createDemandCard() {
+        return new XmlDemandCard();
     }
 
     /**
-     * Create an instance of {@link Demand }
+     * Create an instance of {@link XmlDemand }
      * 
      */
-    public Demand createDemand() {
-        return new Demand();
+    public XmlDemand createDemand() {
+        return new XmlDemand();
     }
 
     /**
-     * Create an instance of {@link City }
+     * Create an instance of {@link XmlCity }
      * 
      */
-    public City createCity() {
-        return new City();
+    public XmlCity createCity() {
+        return new XmlCity();
     }
 
     /**
@@ -166,21 +166,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RowMilepost }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link XmlRowMilepost }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "", name = "clear")
-    public JAXBElement<RowMilepost> createClear(RowMilepost value) {
-        return new JAXBElement<RowMilepost>(_Clear_QNAME, RowMilepost.class, null, value);
+    public JAXBElement<XmlRowMilepost> createClear(XmlRowMilepost value) {
+        return new JAXBElement<XmlRowMilepost>(_Clear_QNAME, XmlRowMilepost.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RowMilepost }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link XmlRowMilepost }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "", name = "mountain")
-    public JAXBElement<RowMilepost> createMountain(RowMilepost value) {
-        return new JAXBElement<RowMilepost>(_Mountain_QNAME, RowMilepost.class, null, value);
+    public JAXBElement<XmlRowMilepost> createMountain(XmlRowMilepost value) {
+        return new JAXBElement<XmlRowMilepost>(_Mountain_QNAME, XmlRowMilepost.class, null, value);
     }
 
     /**

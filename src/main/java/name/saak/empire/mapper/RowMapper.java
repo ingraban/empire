@@ -10,17 +10,17 @@ import org.springframework.stereotype.Service;
 import jakarta.xml.bind.JAXBElement;
 import name.saak.empire.model.Milepost;
 import name.saak.empire.model.MountainMilepost;
-import name.saak.empire.schema.Row;
-import name.saak.empire.schema.RowMilepost;
+import name.saak.empire.schema.XmlRow;
+import name.saak.empire.schema.XmlRowMilepost;
 import name.saak.empire.util.MilepostLocator;
 
 @Service
 public class RowMapper {
 
-	public void mapRow(Map<Point, Milepost> mileposts, Row r, int rowIndex, boolean firstRow) {
-		List<JAXBElement<RowMilepost>> clearOrMountain = r.getClearOrMountain();
+	public void mapRow(Map<Point, Milepost> mileposts, XmlRow r, int rowIndex, boolean firstRow) {
+		List<JAXBElement<XmlRowMilepost>> clearOrMountain = r.getClearOrMountain();
 		int column = 0;
-		for (JAXBElement<RowMilepost> rm : clearOrMountain) {
+		for (JAXBElement<XmlRowMilepost> rm : clearOrMountain) {
 			column += Optional.ofNullable(rm.getValue().getStart()).orElse(0);
 			if (firstRow) MilepostLocator.setOdd(column % 2 != 0);
 			column += rm.getValue().getOffset() * 2;

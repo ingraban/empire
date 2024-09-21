@@ -8,6 +8,9 @@
 
 package name.saak.empire.schema;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -24,7 +27,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}demand-card"/>
+ *         &lt;element name="load" type="{}load" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,36 +38,41 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "demandCard"
+    "load"
 })
-@XmlRootElement(name = "cards")
-public class Cards {
+@XmlRootElement(name = "loads")
+public class XmlLoads {
 
-    @XmlElement(name = "demand-card", required = true)
-    protected DemandCard demandCard;
-
-    /**
-     * Gets the value of the demandCard property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DemandCard }
-     *     
-     */
-    public DemandCard getDemandCard() {
-        return demandCard;
-    }
+    @XmlElement(required = true)
+    protected List<XmlLoad> load;
 
     /**
-     * Sets the value of the demandCard property.
+     * Gets the value of the load property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link DemandCard }
-     *     
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the load property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getLoad().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link XmlLoad }
+     * 
+     * 
      */
-    public void setDemandCard(DemandCard value) {
-        this.demandCard = value;
+    public List<XmlLoad> getLoad() {
+        if (load == null) {
+            load = new ArrayList<XmlLoad>();
+        }
+        return this.load;
     }
 
 }
