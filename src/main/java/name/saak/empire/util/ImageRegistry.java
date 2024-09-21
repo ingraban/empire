@@ -19,7 +19,7 @@ public class ImageRegistry {
 	public ImageIcon getIcon(String location) {
 		if (icons.containsKey(location)) return icons.get(location);
 
-		URL imageURL = getClass().getResource(location);
+		URL imageURL = getClass().getResource("/icons/" + location + ".iconset/icon_256x256.png");
 		icons.put(location, new ImageIcon(imageURL));
 
 		return icons.get(location);
