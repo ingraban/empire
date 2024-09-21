@@ -674,15 +674,9 @@
 		</row>
 	</map>
 	<loads>
-		<!--
-		<load count="3" icon="beer.png" id="beer" name="Bier"/>
-		-->
 		<load count="3" icon="bauxite.png" id="bauxite" name="Bauxit"/>
 		<load count="4" icon="cars.png" id="cars" name="Autos"/>
 		<load count="4" icon="cattle.png" id="cattle" name="Rinder"/>
-		<!--
-		<load count="3" icon="china.png" id="china" name="Porzellan"/>
-		-->
 		<load count="3" icon="coal.png" id="coal" name="Kohle"/>
 		<load count="4" icon="copper.png" id="copper" name="Kupfer"/>
 		<load count="3" icon="corn.png" id="corn" name="Mais"/>
