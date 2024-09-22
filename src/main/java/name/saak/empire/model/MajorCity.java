@@ -53,5 +53,7 @@ public class MajorCity extends SmallCity {
 		g.fillOval(gl.x - MILEPOST_RADIUS, gl.y - 5 + ROW_DISTANCE * 2, MILEPOST_RADIUS * 2, MILEPOST_RADIUS * 2); // Mitte unten
 		g.fillOval(gl.x - MILEPOST_RADIUS - DISTANCE / 2, gl.y - MILEPOST_RADIUS - DISTANCE / 4, MILEPOST_RADIUS * 2, MILEPOST_RADIUS * 2); // Links unten
 		g.fillOval(gl.x - MILEPOST_RADIUS - DISTANCE / 2, gl.y - MILEPOST_RADIUS + DISTANCE / 4, MILEPOST_RADIUS * 2, MILEPOST_RADIUS * 2); // Links oben
+
+		paintLoads(g, board);
 	}
 }
