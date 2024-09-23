@@ -6,7 +6,7 @@ import java.awt.Point;
  * This class maps locations between map location and graphics location
  */
 public class MilepostLocator {
-	private static final int MARGIN = 25;
+	private static final int MARGIN = 100;
 	/**
 	 * Horizontaler Abstand zwischen 2 Mileposts in einer Zeile.
 	 */
